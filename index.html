@@ -25,7 +25,11 @@
             class="d-flex w-100 align-items-center justify-content-center"
           >
             <section class="d-flex w-100">
-              <input class="h-200 w-100 bg-gray-costom" type="text" />
+              <input
+                class="h-200 w-100 arabic bg-gray-costom"
+                type="text"
+                id="one"
+              />
             </section>
           </section>
           <section
@@ -52,7 +56,27 @@
           >
             <section class="d-flex w-100">
               <div class="p-3 bg-gray-dark-costom m-1 h-24 w-33">
-                Trigonometry
+                <div class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+                  <div name="" id=""></div>
+                  <div>
+                    <div class="dropdown-scintific">
+                      <div id="my-dropdown-Scintific" onclick="drop()">
+                        Trigonometry
+                      </div>
+                      <div
+                        class="dropdown-menu-scitific hide"
+                        aria-labelledby="my-dropdown-Scintific"
+                      >
+                        <div class="d-flex gap-1">
+                          < class="d-flex gap-1">
+                          <p class="dropdown-item-scintific">SIN</p>
+                          <p class="dropdown-item-scintific">COS</p>
+                          <p class="dropdown-item-scintific">TAN</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
               <div class="p-3 bg-gray-dark-costom m-1 h-24 w-33">function</div>
             </section>
@@ -63,7 +87,7 @@
           >
             <section class="d-flex w-100">
               <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
-                2nd
+                2<sup>nd</sup>
               </button>
               <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
                 Pie
@@ -137,7 +161,15 @@
               <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
                 log
               </button>
-              <button class="p-3 bg-white m-1 h-24 w-100">1</button>
+              <button
+                id="add"
+                type="button"
+                onclick="ik(this.value);"
+                value="1"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                1
+              </button>
               <button class="p-3 bg-white m-1 h-24 w-100">2</button>
               <button class="p-3 bg-white m-1 h-24 w-100">3</button>
               <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">+</button>
@@ -147,11 +179,36 @@
             class="d-flex w-100 align-items-center justify-content-center"
           >
             <section class="d-flex w-100">
-              <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">ln</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">+/-</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">0</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">.</button>
-              <button class="p-3 bg-blue-costom m-1 h-24 w-100">=</button>
+              <button
+                onclick="handleValue('ln')"
+                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
+              >
+                ln
+              </button>
+              <button
+                onclick="handleValue('+/-')"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                +/-
+              </button>
+              <button
+                onclick="handleValue('0')"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                0
+              </button>
+              <button
+                onclick="handleValue('0')"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                .
+              </button>
+              <div
+                onclick="handleValue('=')"
+                class="p-3 bg-blue-costom m-1 h-24 w-100"
+              >
+                =
+              </div>
             </section>
           </section>
         </form>
@@ -172,5 +229,6 @@
       integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
       crossorigin="anonymous"
     ></script>
+    <script src="./App.js"></script>
   </body>
 </html>
