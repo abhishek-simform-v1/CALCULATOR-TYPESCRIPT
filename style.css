@@ -8,14 +8,14 @@ button {
   outline: none;
   border: none;
   border-radius: 1px;
+  cursor: pointer;
 }
-:root{
-
-    --col-black-costom :#3c3d3e !important;
-    --col-white:#fff !important;
-    --bg-gray-costom : #f3f3f3 !important;
-    --bg-blue-costom : #91c1e7 !important;
-    --bg-gray-dark-costom:#ebebeb !important;
+:root {
+  --col-black-costom: #3c3d3e !important;
+  --col-white: #fff !important;
+  --bg-gray-costom: #f3f3f3 !important;
+  --bg-blue-costom: #91c1e7 !important;
+  --bg-gray-dark-costom: #ebebeb !important;
 }
 
 input.arabic {
@@ -23,43 +23,42 @@ input.arabic {
   font-size: 3rem;
 }
 
-.dropdown-item-scintific{
-    padding: 1rem;
-background-color: var(--col-white);
-display: flex;
-align-items: center;
-justify-content: center;
-max-height: 40px;
-width: 100% ;
-z-index: 22;
+.dropdown-item-scintific {
+  padding: 1rem;
+  background-color: var(--col-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-height: 40px;
+  width: 100%;
+  z-index: 22;
+}
+.dropdown-scintific {
+  cursor: pointer;
+}
+.dropdown-menu-scitific {
+  background-color: var(--bg-gray-costom);
+  cursor: pointer !important;
+  margin: 0.3rem;
+}
+.d-function {
+  background-color: var(--bg-gray-costom);
+  cursor: pointer !important;
+  padding: 0.3rem;
+}
+.hide {
+  display: none !important;
+}
 
+.d-absolute {
+  position: absolute;
 }
-.dropdown-scintific{
-    cursor: pointer;
-}
-.dropdown-menu-scitific{
-    background-color: var(--bg-gray-costom);
-    cursor: pointer !important;
-    margin: 0.3rem;
-}
-.d-function{
-    background-color: var(--bg-gray-costom);
-    cursor: pointer !important;
-    padding:0.3rem
-}
-.hide{
-    display: none !important;
-}
-
-.d-absolute{
-    position: absolute;
-}
-.d-relative{
-    position: relative;
+.d-relative {
+  position: relative;
 }
 /* color */
 .bg-gray-costom {
-  background-color: var(--bg-gray-costom ) !important;
+  background-color: var(--bg-gray-costom) !important;
 }
 
 .bg-blue-costom {
@@ -101,7 +100,7 @@ z-index: 22;
 .m-1 {
   margin: 2px !important;
 }
-.grid--6{
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
+.grid--6 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }

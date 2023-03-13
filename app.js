@@ -1,103 +1,58 @@
-// // // calculator screen
-// const calculatorDisplay = document.querySelector(".display-container");
-// // numbers
-// const zero = document.querySelector("#zero");
-// const one = document.querySelector("#one");
-// const two = document.querySelector("#two");
-// const three = document.querySelector("#three");
-// const four = document.querySelector("#four");
-// const five = document.querySelector("#five");
-// const six = document.querySelector("#six");
-// const seven = document.querySelector("#seven");
-// const eight = document.querySelector("#eight");
-// const nine = document.querySelector("#nine");
-// // operator
-// const openParenthesis = document.querySelector("#opened-parenthesis");
-// const closedParenthesis = document.querySelector("#closed-parenthesis");
-// const eraseAll = document.querySelector("#erase-all-sign");
-// const eraseButton = document.querySelector("#erase-button");
-// const divideButton = document.querySelector("#split-operator");
-// const multiplicationButton = document.querySelector("#multiplication-operator");
-// const lessButton = document.querySelector("#less-operator");
-// const plusButton = document.querySelector("#plus-operator");
-// const decimalButton = document.querySelector("#decimal-operator");
-// const equalButton = document.querySelector("#equal-button");
+// // calculator screen
+const calculatorDisplay = document.querySelector(".display-container");
+// numbers
+const zero = document.querySelector("#zero");
+const one = document.querySelector("#one");
+const two = document.querySelector("#two");
+const three = document.querySelector("#three");
+const four = document.querySelector("#four");
+const five = document.querySelector("#five");
+const six = document.querySelector("#six");
+const seven = document.querySelector("#seven");
+const eight = document.querySelector("#eight");
+const nine = document.querySelector("#nine");
+const form = document.getElementById("myForm");
 
-// function ik(val) {
-//   document.getElementById("one").value = val;
-// }
 
-// const mydropdown = document.querySelector(".dropdown-menu-scitific");
+// operator
+const openParenthesis = document.querySelector("#opened-parenthesis");
+const closedParenthesis = document.querySelector("#closed-parenthesis");
+const eraseAll = document.querySelector("#erase-all-sign");
+const eraseButton = document.querySelector("#erase-button");
+const divideButton = document.querySelector("#split-operator");
+const multiplicationButton = document.querySelector("#multiplication-operator");
+const lessButton = document.querySelector("#less-operator");
+const plusButton = document.querySelector("#plus-operator");
+const decimalButton = document.querySelector("#decimal-operator");
+const equalButton = document.querySelector("#equal-button");
 
-// function drop() {
-//   // mydropdown.classList.remove("hide")
-//   console.log("hi");
-//   mydropdown.classList.contains("hide")
-//     ? mydropdown.classList.remove("hide")
-//     : mydropdown.classList.add("hide");
-// }
-// const mydropdownfunc = document.querySelector(".d-function");
 
-// function dropf() {
-//   // mydropdown.classList.remove("hide")
-//   console.log("hi");
-//   mydropdownfunc.classList.contains("hide")
-//     ? mydropdownfunc.classList.remove("hide")
-//     : mydropdownfunc.classList.add("hide");
-// }
-// const handleValue = (val) => {
-//   console.log(val);
-// };
+const mydropdown = document.querySelector(".dropdown-menu-scitific");
 
-// let inputUser = "5 + 5";
-// const handleString = (str) => {
-//   return inputString.push(str);
-// };
-// let inputString = [];
-// handleString(inputUser);
+function drop() {
+  // mydropdown.classList.remove("hide")
+  console.log("hi");
+  mydropdown.classList.contains("hide")
+    ? mydropdown.classList.remove("hide")
+    : mydropdown.classList.add("hide");
+}
+const mydropdownfunc = document.querySelector(".d-function");
 
-// let deffInputstring = [];
-// let newInput = [];
-// for (i = 0; i < inputString.length; i++) {
-//   newInput = inputString[i].split("");
-// }
-// console.log(newInput);
-// for (j = 0; j < newInput.length; j++) {
-//   if (newInput[j] === "(" || newInput[j] === ")") {
-//     deffInputstring.push(newInput[j]);
-//   }
-// }
+function dropf() {
+  // mydropdown.classList.remove("hide")
+  console.log("hi");
+  mydropdownfunc.classList.contains("hide")
+    ? mydropdownfunc.classList.remove("hide")
+    : mydropdownfunc.classList.add("hide");
+}
+const handleValue = (val) => {
+  event.preventDefault();
+  console.log(val);
+};
 
-// console.log(deffInputstring);
 
-// Function to check if
-// given character is
-// an operator or not.
 
-// Function that converts infix
-// The main function to convert infix expression to postfix expression
-console.log([4, 4, "+", 4, "/", 75, 3, "%", "+"]);
-console.log("(4+4)/4+75%3");
 
-// Function to find priority
-// of given operator.
-
-// function infixToPostfix(expression) {
-//   let poststack = []; //For stack operations, we are using JavaScript built in stack
-//   let perenthstack = [];
-//   let result = [];
-
-//   for (let i = 0; i < expression.length; i++) {
-//     let token = expression[i];
-//     if (token === "(") {
-//       perenthstack.push(token);
-//     } else {
-//       if (getPriority(token)) {
-//         poststack.push(token);
-//       }
-//       else if(token)
-//     }
-//   }
 function prec(C) {
   switch (C) {
     case "log":
@@ -119,7 +74,6 @@ function prec(C) {
     default:
       return 0;
   }
-  return 0;
 }
 
 function infixToPostfix(s) {
@@ -165,16 +119,9 @@ function infixToPostfix(s) {
       postFix.push(token);
     } else postFix.push(Number(token));
   }
-
-  console.log("result", result);
+  return result;
 }
 
-// If the scanned character is an
-// // ‘(‘, push it to the stack.
-// console.log(poststack);
-// console.log(result);
-
-// console.log(perenthstack);
 function strToArray(str) {
   let resArr = [];
   let i = 0;
@@ -195,9 +142,7 @@ function strToArray(str) {
   return resArr;
 }
 
-let exp = "(4+4)/4+75%3";
-exp = strToArray(exp);
-infixToPostfix(exp);
+
 
 const arrOpOr = [];
 
@@ -234,13 +179,31 @@ function evaluatePost(prefix) {
           stack.push(result);
           break;
       }
+      return result;
     }
   }
-
-  console.log("Res: ", stack.pop());
 }
 // Driver code
 let str = "(5+5*(335-1)+4)";
-evaluatePost([4, 4, "+", 4, "/", 75, 3, "%", "+"]);
+
+
+
+
+function addToScreen(val) {
+  calculatorDisplay.value += val;
+}
+
+function clearScreen(val) {
+  calculatorDisplay.value = val;
+}
+form.addEventListener('submit', handleForm);
+function handleForm(event) { event.preventDefault(); submit(); }
+function submit() {
+
+  let exp = calculatorDisplay.value;
+  exp = strToArray(exp);
+  infixToPostfix(exp);
+  calculatorDisplay.value = evaluatePost((infixToPostfix(exp)));
+}
 
 // console.log(eval("( ( ( 4 + 4 ) / 4 ) + ( 75 % 3 ) )"));

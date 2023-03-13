@@ -17,18 +17,14 @@
       class="container-fluid h-100-vh d-flex justify-content-center align-items-center"
     >
       <section class="w-max-width gap-2 bg-gray-costom">
-        <form
-          action="
-       "
-        >
+        <form id="myForm">
           <section
             class="d-flex w-100 align-items-center justify-content-center"
           >
             <section class="d-flex w-100">
               <input
-                class="h-200 w-100 arabic bg-gray-costom"
+                class="h-200 w-100 arabic bg-gray-costom display-container"
                 type="text"
-                id="one"
               />
             </section>
           </section>
@@ -38,6 +34,9 @@
             <section class="d-flex w-100">
               <div class="p-3 bg-gray-dark-costom m-1 h-24 w-20">DEG</div>
               <div class="p-3 bg-gray-dark-costom m-1 h-24 w-20">F-E</div>
+            </section>
+            <section>
+              <div class="p-3 bg-gray-dark-costom h-24 w-100">History</div>
             </section>
           </section>
           <section
@@ -68,7 +67,6 @@
                         aria-labelledby="my-dropdown-Scintific"
                       >
                         <div class="d-flex gap-1">
-                          < class="d-flex gap-1">
                           <p class="dropdown-item-scintific">SIN</p>
                           <p class="dropdown-item-scintific">COS</p>
                           <p class="dropdown-item-scintific">TAN</p>
@@ -93,7 +91,15 @@
                 Pie
               </button>
               <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">e</button>
-              <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">C</button>
+              <button
+                id="nine"
+                onclick="clearScreen(this.value);"
+                type="button"
+                value=""
+                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
+              >
+                C
+              </button>
               <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
                 bac
               </button>
@@ -134,10 +140,43 @@
           >
             <section class="d-flex w-100">
               <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">xy</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">7</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">8</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">9</button>
-              <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">x</button>
+              <button
+                id="seven"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="7"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                7
+              </button>
+              <button
+                id="eight"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="8"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                8
+              </button>
+              <button
+                id="nine"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="9"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                9
+              </button>
+              <button
+                id="mul"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="*"
+                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
+                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
+              >
+                *
+              </button>
             </section>
           </section>
           <section
@@ -147,10 +186,45 @@
               <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
                 10x
               </button>
-              <button class="p-3 bg-white m-1 h-24 w-100">4</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">5</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">6</button>
-              <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">-</button>
+              <button
+                id="four"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="4"
+                class="p-3 bg-white m-1 h-24 w-100"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                4
+              </button>
+              <button
+                id="five"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="5"
+                class="p-3 bg-white m-1 h-24 w-100"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                5
+              </button>
+              <button
+                id="six"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="6"
+                class="p-3 bg-white m-1 h-24 w-100"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                6
+              </button>
+              <button
+                id="sub"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="-"
+                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
+              >
+                -
+              </button>
             </section>
           </section>
 
@@ -162,17 +236,42 @@
                 log
               </button>
               <button
-                id="add"
+                id="one"
+                onclick="addToScreen(this.value);"
                 type="button"
-                onclick="ik(this.value);"
                 value="1"
                 class="p-3 bg-white m-1 h-24 w-100"
               >
                 1
               </button>
-              <button class="p-3 bg-white m-1 h-24 w-100">2</button>
-              <button class="p-3 bg-white m-1 h-24 w-100">3</button>
-              <button class="p-3 bg-gray-dark-costom m-1 h-24 w-100">+</button>
+              <button
+                id="two"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="2"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                2
+              </button>
+
+              <button
+                id="two"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="3"
+                class="p-3 bg-white m-1 h-24 w-100"
+              >
+                3
+              </button>
+              <button
+                id="plus"
+                onclick="addToScreen(this.value);"
+                type="button"
+                value="+"
+                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
+              >
+                +
+              </button>
             </section>
           </section>
           <section
@@ -203,12 +302,15 @@
               >
                 .
               </button>
-              <div
-                onclick="handleValue('=')"
-                class="p-3 bg-blue-costom m-1 h-24 w-100"
+              <button
+                id="plus"
+                onclick="handleForm(); "
+                type="submit"
+                value="submit"
+                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
               >
                 =
-              </div>
+              </button>
             </section>
           </section>
         </form>
