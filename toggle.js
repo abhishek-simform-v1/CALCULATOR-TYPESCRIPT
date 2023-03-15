@@ -21,11 +21,11 @@ function toggler() {
   if (squre.classList.contains("hide")) {
     squre.classList.remove("hide");
     cube.classList.add("hide");
-    tooglrtoggle.style.backgroundColor = "#91c1e7";
+    tooglrtoggle.style.backgroundColor = "#f6f6f6";
   } else {
     squre.classList.add("hide");
     cube.classList.remove("hide");
-    tooglrtoggle.style.backgroundColor = "#f6f6f6";
+    tooglrtoggle.style.backgroundColor = "#91c1e7";
   }
 
   if (squrt.classList.contains("hide")) {
@@ -60,7 +60,7 @@ function toggler() {
     ln2.classList.remove("hide");
     exV.classList.add("hide");
   } else {
-    ln.classList.add("hide");
+    ln2.classList.add("hide");
     exV.classList.remove("hide");
   }
 }

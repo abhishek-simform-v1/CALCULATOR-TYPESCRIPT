@@ -1,3 +1,6 @@
+
+
+
 // // calculator screen
 const calculatorDisplay = document.querySelector(".display-container");
 const form = document.getElementById("myForm");
@@ -70,8 +73,12 @@ function cal(stack, currentNumber, sign) {
   } else if (sign === "^") {
     stack.push(Math.pow(stack.pop(), currentNumber));
   } else if (sign === "√") {
-    let operand = 1 / stack.pop();
-    stack.push(Math.pow(currentNumber, operand));
+    if (sign == "√") {
+      stack.push(Math.sqrt(currentNumber));
+    } else {
+      let operand = 1 / stack.pop();
+      stack.push(Math.pow(currentNumber, operand));
+    }
   }
 }
 function calculate(s) {
