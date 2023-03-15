@@ -17,7 +17,7 @@
     <main
       class="container-fluid h-100-vh d-flex justify-content-center align-items-center"
     >
-      <section class="w-max-width gap-2 bg-gray-costom">
+      <section class="w-max-width gap-2 bg-gray-costom calculator">
         <form id="myForm">
           <!-- ---------- input Field  ---------- -->
           <section
@@ -42,11 +42,11 @@
             <section class="d-flex w-100">
               <button
                 onclick="Deg() "
-                class="toggleDeg Deg fw-bolder p-3 m-1 h-24 w-20"
+                class="toggleDeg Deg fw-bold p-3 m-1 h-24 w-20"
               >
                 DEG
               </button>
-              <button onclick="FeFunc()" class="fw-bolder p-3 m-1 h-24 w-20">
+              <button onclick="FeFunc()" class="fw-bold p-3 m-1 h-24 w-20">
                 F-E
               </button>
               <section
@@ -133,7 +133,20 @@
                   </svg>
 
                   Trigonometry
-
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    width="20px"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                    />
+                  </svg>
                   <div
                     class="dropdown-menu-scitific d-flex calculator-tf-modal-1 hide d-absolute bg-white p-c-5 gap-1 align-items-center"
                     aria-labelledby="my-dropdown-Scintific"
@@ -189,33 +202,50 @@
               <div class="h-24">
                 <div
                   id="my-dropdown-Scintific"
-                  class="dropdown-scintific d-relative calculator-tf-trigonometry p-3 m-1 h-24 w-100"
+                  class="dropdown-scintific d-relative calculator-tf-trigonometry h-24 w-100"
                 >
-                  <svg
-                    version="1.0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15.000000pt"
-                    height="15.000000pt"
-                    viewBox="0 0 90.000000 90.000000"
-                    preserveAspectRatio="xMidYMid meet"
-                  >
-                    <g
-                      transform="translate(0.000000,90.000000) scale(0.100000,-0.100000)"
-                      fill="#000000"
-                      stroke="none"
+                  <div>
+                    <svg
+                      version="1.0"
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="15.000000pt"
+                      height="15.000000pt"
+                      viewBox="0 0 90.000000 90.000000"
+                      preserveAspectRatio="xMidYMid meet"
                     >
-                      <path
-                        d="M595 800 c-34 -11 -90 -61 -110 -99 -12 -24 -23 -61 -39 -133 -6 -26
+                      <g
+                        transform="translate(0.000000,90.000000) scale(0.100000,-0.100000)"
+                        fill="#000000"
+                        stroke="none"
+                      >
+                        <path
+                          d="M595 800 c-34 -11 -90 -61 -110 -99 -12 -24 -23 -61 -39 -133 -6 -26
 -10 -28 -56 -28 -37 0 -50 -4 -50 -14 0 -8 -3 -21 -6 -30 -5 -13 3 -16 45 -16
 l52 0 -6 -37 c-4 -21 -17 -86 -30 -145 -35 -159 -60 -199 -85 -138 -24 58 -74
 76 -110 40 -47 -47 -4 -110 75 -110 146 0 218 88 256 313 l13 77 53 0 c39 0
 53 4 53 14 0 8 3 21 6 30 5 12 -5 16 -48 18 l-54 3 12 87 c7 48 19 99 27 114
 l14 26 20 -38 c25 -49 61 -64 97 -40 30 19 36 75 11 96 -20 16 -101 22 -140
 10z"
+                        />
+                      </g>
+                    </svg>
+                    Function
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke-width="1.5"
+                      stroke="currentColor"
+                      width="20px"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
                       />
-                    </g>
-                  </svg>
-                  Function
+                    </svg>
+                  </div>
+
                   <div
                     class="dropdown-menu-scitific d-flex calculator-tf-modal-2 hide d-absolute bg-white p-c-5 gap-1 align-items-center"
                     aria-labelledby="my-dropdown-Scintific"
@@ -743,7 +773,7 @@ l14 26 20 -38 c25 -49 61 -64 97 -40 30 19 36 75 11 96 -20 16 -101 22 -140
                 onclick="addToScreen(this.value);"
                 type="button"
                 value="0"
-                class="p-3 bg-white m-1 h-24 w-100"
+                class="p-3 fw-bolder bg-white m-1 h-24 w-100"
               >
                 0
               </button>
@@ -751,7 +781,7 @@ l14 26 20 -38 c25 -49 61 -64 97 -40 30 19 36 75 11 96 -20 16 -101 22 -140
                 onclick="addToScreen(this.value);"
                 type="button"
                 value="."
-                class="p-3 bg-white m-1 h-24 w-100"
+                class="p-3 bg-white fw-bolder m-1 h-24 w-100"
               >
                 .
               </button>
@@ -779,10 +809,10 @@ l14 26 20 -38 c25 -49 61 -64 97 -40 30 19 36 75 11 96 -20 16 -101 22 -140
       </section>
     </main>
     <script src="./app.js"></script>
-    <script src="./directOperation.js"></script>
-    <script src="./toggle.js"></script>
-    <script src="./TrigonoFunctions.js"></script>
-    <script src="./Memory.js"></script>
+    <script src="./functions/directOperation.js"></script>
+    <script src="./functions/toggle.js"></script>
+    <script src="./functions/TrigonoFunctions.js"></script>
+    <script src="./functions/Memory.js"></script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"

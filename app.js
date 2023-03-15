@@ -36,17 +36,6 @@ dropdownFunction.addEventListener("click", () => {
   }
 });
 
-function dropf() {
-  // mydropdown.classList.remove("hide")
-  console.log("hi");
-  mydropdownfunc.classList.contains("hide")
-    ? mydropdownfunc.classList.remove("hide")
-    : mydropdownfunc.classList.add("hide");
-}
-const handleValue = (val) => {
-  // event.preventDefault();
-  console.log(val);
-};
 
 function trimSpaces(str) {
   let newStr = "";

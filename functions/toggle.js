@@ -15,6 +15,7 @@ const ln2 = document.querySelector(".ln");
 const exV = document.querySelector(".ex");
 tooglrtoggle.style.backgroundColor = "#f6f6f6";
 
+// Function for Toggleing 2nd row
 function toggler() {
   event.preventDefault();
 
@@ -22,10 +23,14 @@ function toggler() {
     squre.classList.remove("hide");
     cube.classList.add("hide");
     tooglrtoggle.style.backgroundColor = "#f6f6f6";
+    tooglrtoggle.style.color = "var(--col-black-costom)";
+
   } else {
     squre.classList.add("hide");
     cube.classList.remove("hide");
     tooglrtoggle.style.backgroundColor = "#91c1e7";
+    tooglrtoggle.style.color = "#fff";
+
   }
 
   if (squrt.classList.contains("hide")) {

@@ -33,7 +33,17 @@ input.arabic {
   font-size: 3rem;
   font-weight: 500;
 }
+/* custom class for Positioning */
+.d-absolute {
+  position: absolute;
+  z-index: 9999;
+}
 
+.d-relative {
+  position: relative;
+}
+
+/* Trigo Functions */
 .dropdown-item-scintific {
   padding: 1rem;
   background-color: var(--col-white);
@@ -45,10 +55,8 @@ input.arabic {
   z-index: 22;
 }
 
-.dropdown-scintific {
-  cursor: pointer;
-}
 .calculator-tf-trigonometry {
+  cursor: pointer;
   transition: all 0.3s;
 }
 .calculator-tf-trigonometry:hover {
@@ -66,26 +74,12 @@ input.arabic {
   top: 100% !important;
   left: 0% !important;
 }
-.d-function {
-  background-color: var(--bg-gray-costom);
-  cursor: pointer !important;
-  padding: 0.3rem;
-}
 
 .hide {
   display: none !important;
 }
 
-.d-absolute {
-  position: absolute;
-  z-index: 9999;
-}
-
-.d-relative {
-  position: relative;
-}
-
-/* color */
+/* color - background color */
 .bg-gray-costom {
   background-color: var(--primary-background) !important;
 }
@@ -94,9 +88,6 @@ input.arabic {
 }
 .bg-gray-costom:hover {
   background-color: var(--primary-background) !important;
-}
-.p-c-5 {
-  padding: 5px;
 }
 
 .bg-blue-costom {
@@ -112,7 +103,7 @@ input.arabic {
   color: var(--col-black-costom);
 }
 
-/* height */
+/* height -width */
 .h-100-vh {
   height: 100vh;
 }
@@ -145,18 +136,26 @@ input.arabic {
   width: 30%;
 }
 
-.m-1 {
-  margin: 2px !important;
-}
-
 .grid--6 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
 }
-
+/* display Container Input Field */
 .display-container {
   border: none;
   padding: 1rem;
   outline: none;
   background-color: var(--primary-background);
+}
+/* custom margin padding */
+.p-c-5 {
+  padding: 5px;
+}
+.m-1 {
+  margin: 2px !important;
+}
+
+/* calculator */
+.calculator {
+  box-shadow: var(--accent-button-background) 0px 0px 500px -50px;
 }
