@@ -1,42 +1,37 @@
 // // calculator screen
 const calculatorDisplay = document.querySelector(".display-container");
-// numbers
-const zero = document.querySelector("#zero");
-const one = document.querySelector("#one");
-const two = document.querySelector("#two");
-const three = document.querySelector("#three");
-const four = document.querySelector("#four");
-const five = document.querySelector("#five");
-const six = document.querySelector("#six");
-const seven = document.querySelector("#seven");
-const eight = document.querySelector("#eight");
-const nine = document.querySelector("#nine");
 const form = document.getElementById("myForm");
-
-
-// operator
-const openParenthesis = document.querySelector("#opened-parenthesis");
-const closedParenthesis = document.querySelector("#closed-parenthesis");
-const eraseAll = document.querySelector("#erase-all-sign");
-const eraseButton = document.querySelector("#erase-button");
-const divideButton = document.querySelector("#split-operator");
-const multiplicationButton = document.querySelector("#multiplication-operator");
-const lessButton = document.querySelector("#less-operator");
-const plusButton = document.querySelector("#plus-operator");
-const decimalButton = document.querySelector("#decimal-operator");
-const equalButton = document.querySelector("#equal-button");
-
-
-const mydropdown = document.querySelector(".dropdown-menu-scitific");
-
-function drop() {
-  // mydropdown.classList.remove("hide")
-  console.log("hi");
-  mydropdown.classList.contains("hide")
-    ? mydropdown.classList.remove("hide")
-    : mydropdown.classList.add("hide");
-}
+const mydropDownMenu = document.querySelector(".dropdown-menu-scitific");
+const mydropdown = document.getElementById("my-dropdown-Scintific");
 const mydropdownfunc = document.querySelector(".d-function");
+const dropdownFunctions = document.querySelectorAll(
+  ".calculator-tf-trigonometry"
+);
+const dropdownTriangle = dropdownFunctions[0];
+const dropdownFunction = dropdownFunctions[1];
+const displayInput = document.querySelector("#display-input");
+
+const dropdownModalTriangle = document.querySelector(".calculator-tf-modal-1");
+const dropdownModalFunction = document.querySelector(".calculator-tf-modal-2");
+
+const error = document.getElementById("error");
+
+dropdownTriangle.addEventListener("click", () => {
+  dropdownModalTriangle.classList.contains("hide")
+    ? dropdownModalTriangle.classList.remove("hide")
+    : dropdownModalTriangle.classList.add("hide");
+  if (!dropdownModalFunction.classList.contains("hide")) {
+    dropdownModalFunction.classList.add("hide");
+  }
+});
+dropdownFunction.addEventListener("click", () => {
+  dropdownModalFunction.classList.contains("hide")
+    ? dropdownModalFunction.classList.remove("hide")
+    : dropdownModalFunction.classList.add("hide");
+  if (!dropdownModalTriangle.classList.contains("hide")) {
+    dropdownModalTriangle.classList.add("hide");
+  }
+});
 
 function dropf() {
   // mydropdown.classList.remove("hide")
@@ -46,164 +41,98 @@ function dropf() {
     : mydropdownfunc.classList.add("hide");
 }
 const handleValue = (val) => {
-  event.preventDefault();
+  // event.preventDefault();
   console.log(val);
 };
 
-
-
-
-function prec(C) {
-  switch (C) {
-    case "log":
-      return 4;
-    case "^":
-      return 3;
-    case "*":
-      return 2;
-    case "√":
-      return 3;
-    case "/":
-      return 2;
-    case "%":
-      return 2;
-    case "+":
-      return 1;
-    case "-":
-      return 1;
-    default:
-      return 0;
-  }
-}
-
-function infixToPostfix(s) {
-  let PostStack = []; // For stack operations, we are using JavaScript built-in stack
-  let result = [];
-  let postFix = [];
-  for (let i = 0; i < s.length; i++) {
-    let c = s[i];
-
-    if (/[a-zA-Z0-9]/.test(c)) {
-      // Using regular expression to check if c is an operand
-      result.push(c);
-    } else if (c == "(") {
-      PostStack.push("(");
-    } else if (c == ")") {
-      while (PostStack[PostStack.length - 1] != "(") {
-        result.push(PostStack[PostStack.length - 1]);
-        PostStack.pop();
-      }
-      PostStack.pop();
-    } else {
-      // If an operator is scanned
-      while (
-        PostStack.length != 0 &&
-        prec(c) <= prec(PostStack[PostStack.length - 1])
-      ) {
-        result.push(PostStack[PostStack.length - 1]);
-        PostStack.pop();
-      }
-      PostStack.push(c);
-    }
-  }
-
-  while (PostStack.length != 0) {
-    // Pop all the remaining elements from the stack
-    result.push(PostStack[PostStack.length - 1]);
-    PostStack.pop();
-  }
-  // console.log(result);
-  for (let i = 0; i < result.length; i++) {
-    let token = result[i];
-    if (isNaN(token)) {
-      postFix.push(token);
-    } else postFix.push(Number(token));
-  }
-  return result;
-}
-
-function strToArray(str) {
-  let resArr = [];
+function trimSpaces(str) {
+  let newStr = "";
   let i = 0;
   while (i < str.length) {
-    if (!isNaN(Number(str[i]))) {
-      let currStr = "";
-      while (!isNaN(Number(str[i]))) {
-        currStr += str[i];
+    if (str[i] !== " ") {
+      newStr += str[i];
+    }
+    i++;
+  }
+  return newStr;
+}
+function cal(stack, currentNumber, sign) {
+  if (sign === "+") {
+    stack.push(currentNumber);
+  } else if (sign === "-") {
+    stack.push(-currentNumber);
+  } else if (sign === "/") {
+    stack.push(stack.pop() / currentNumber);
+  } else if (sign === "*") {
+    stack.push(stack.pop() * currentNumber);
+  } else if (sign === "%") {
+    stack.push(stack.pop() % currentNumber);
+  } else if (sign === "^") {
+    stack.push(Math.pow(stack.pop(), currentNumber));
+  } else if (sign === "√") {
+    stack.push(Math.sqrt(stack.pop(), currentNumber));
+  }
+}
+function calculate(s) {
+  s = trimSpaces(s);
+  let stack = [];
+  let stackSignPair = [];
+  let sign = "+";
+  for (let i = 0; i < s.length; i++) {
+    if (!isNaN(Number(s[i]))) {
+      let currentNumber = "";
+      while (!isNaN(Number(s[i])) || s[i] === ".") {
+        currentNumber += s[i];
         i++;
       }
-
-      resArr.push(Number(currStr));
+      i--;
+      currentNumber = Number(currentNumber);
+      cal(stack, currentNumber, sign);
+    } else if (s[i] === "(") {
+      stackSignPair.push([stack, sign]);
+      stack = [];
+      sign = "+";
+    } else if (s[i] === ")") {
+      let currentNumber = stack.reduce((acc, curr) => (acc += curr), 0);
+      let getPair = stackSignPair.pop();
+      [stack, sign] = getPair;
+      cal(stack, currentNumber, sign);
     } else {
-      resArr.push(str[i]);
-      i++;
+      sign = s[i];
     }
   }
-  return resArr;
+  let acc = stack.reduce((acc, curr) => (acc += curr), 0);
+  return acc;
 }
-
-
-
-const arrOpOr = [];
-
-function evaluatePost(prefix) {
-  const stack = [];
-
-  for (let i = 0; i < prefix.length; i++) {
-    let token = prefix[i];
-    if (!isNaN(token)) {
-      stack.push(Number(token));
-    } else {
-      const operand2 = stack.pop();
-      const operand1 = stack.pop();
-      let result;
-      switch (token) {
-        case "+":
-          result = operand1 + operand2;
-          stack.push(result);
-          break;
-        case "-":
-          result = operand1 - operand2;
-          stack.push(result);
-          break;
-        case "*":
-          result = operand1 * operand2;
-          stack.push(result);
-          break;
-        case "/":
-          result = operand1 / operand2;
-          stack.push(result);
-          break;
-        case "%":
-          result = operand1 % operand2;
-          stack.push(result);
-          break;
-      }
-      return result;
-    }
-  }
-}
-// Driver code
-let str = "(5+5*(335-1)+4)";
-
-
-
-
+// add function
 function addToScreen(val) {
   calculatorDisplay.value += val;
+}
+// delete function
+
+function deletVal() {
+  calculatorDisplay.value = calculatorDisplay.value.slice(0, -1);
 }
 
 function clearScreen(val) {
   calculatorDisplay.value = val;
 }
-form.addEventListener('submit', handleForm);
-function handleForm(event) { event.preventDefault(); submit(); }
-function submit() {
-
-  let exp = calculatorDisplay.value;
-  exp = strToArray(exp);
-  infixToPostfix(exp);
-  calculatorDisplay.value = evaluatePost((infixToPostfix(exp)));
+form.addEventListener("submit", handleForm);
+function handleForm(event) {
+  event.preventDefault();
+  submit();
 }
-
-// console.log(eval("( ( ( 4 + 4 ) / 4 ) + ( 75 % 3 ) )"));
+function submit() {
+  evalutedResult = calculate(calculatorDisplay.value);
+  if (isNaN(evalutedResult)) {
+    calculatorDisplay.value = "";
+    error.style.color = "#ff0000";
+    error.innerHTML = "<p>not a number</p>";
+    setTimeout(() => {
+      error.innerHTML = "";
+    }, 1000);
+  } else {
+    calculatorDisplay.value = evalutedResult;
+    return evalutedResult;
+  }
+}
