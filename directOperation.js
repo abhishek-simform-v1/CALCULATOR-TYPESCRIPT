@@ -1,13 +1,15 @@
 // square root of two function
 function sqrtoftwo() {
-  let res;
-  if (isNaN(Number(calculatorDisplay.value))) {
-    res = submit();
-  } else {
-    res = Number(calculatorDisplay.value);
+  if (calculatorDisplay.value) {
+    let res;
+    if (isNaN(Number(calculatorDisplay.value))) {
+      res = submit();
+    } else {
+      res = Number(calculatorDisplay.value);
+    }
+    calculatorDisplay.value = Math.sqrt(res);
+    calculatorDisplay.value.pop();
   }
-  calculatorDisplay.value = Math.sqrt(res);
-  calculatorDisplay.value.pop();
 }
 
 // cube root of three function

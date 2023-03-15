@@ -70,7 +70,8 @@ function cal(stack, currentNumber, sign) {
   } else if (sign === "^") {
     stack.push(Math.pow(stack.pop(), currentNumber));
   } else if (sign === "√") {
-    stack.push(Math.sqrt(stack.pop(), currentNumber));
+    let operand = 1 / stack.pop();
+    stack.push(Math.pow(currentNumber, operand));
   }
 }
 function calculate(s) {

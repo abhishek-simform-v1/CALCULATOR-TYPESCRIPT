@@ -1,7 +1,6 @@
 const tooglrtoggle = document.querySelector(".calk-2nd-toggle");
 
 //////////////
-
 const squre = document.querySelector(".squre");
 const cube = document.querySelector(".cube");
 const squrt = document.querySelector(".squrt");
