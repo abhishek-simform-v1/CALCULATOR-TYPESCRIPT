@@ -37,71 +37,41 @@ dropdownFunction.addEventListener("click", () => {
 });
 
 
-function trimSpaces(str) {
-  let newStr = "";
-  let i = 0;
-  while (i < str.length) {
-    if (str[i] !== " ") {
-      newStr += str[i];
-    }
-    i++;
-  }
-  return newStr;
-}
-function cal(stack, currentNumber, sign) {
-  if (sign === "+") {
-    stack.push(currentNumber);
-  } else if (sign === "-") {
-    stack.push(-currentNumber);
-  } else if (sign === "/") {
-    stack.push(stack.pop() / currentNumber);
-  } else if (sign === "*") {
-    stack.push(stack.pop() * currentNumber);
-  } else if (sign === "%") {
-    stack.push(stack.pop() % currentNumber);
-  } else if (sign === "^") {
-    stack.push(Math.pow(stack.pop(), currentNumber));
-  } else if (sign === "√") {
-    if (sign == "√") {
-      stack.push(Math.sqrt(currentNumber));
-    } else {
-      let operand = 1 / stack.pop();
-      stack.push(Math.pow(currentNumber, operand));
-    }
-  }
-}
-function calculate(s) {
-  s = trimSpaces(s);
-  let stack = [];
-  let stackSignPair = [];
-  let sign = "+";
-  for (let i = 0; i < s.length; i++) {
-    if (!isNaN(Number(s[i]))) {
-      let currentNumber = "";
-      while (!isNaN(Number(s[i])) || s[i] === ".") {
-        currentNumber += s[i];
-        i++;
-      }
-      i--;
-      currentNumber = Number(currentNumber);
-      cal(stack, currentNumber, sign);
-    } else if (s[i] === "(") {
-      stackSignPair.push([stack, sign]);
-      stack = [];
-      sign = "+";
-    } else if (s[i] === ")") {
-      let currentNumber = stack.reduce((acc, curr) => (acc += curr), 0);
-      let getPair = stackSignPair.pop();
-      [stack, sign] = getPair;
-      cal(stack, currentNumber, sign);
-    } else {
-      sign = s[i];
-    }
-  }
-  let acc = stack.reduce((acc, curr) => (acc += curr), 0);
-  return acc;
-}
-// add function
+// function trimSpaces(str) {
+//   let newStr = "";
+//   let i = 0;
+//   while (i < str.length) {
+//     if (str[i] !== " ") {
+//       newStr += str[i];
+//     }
+//     i++;
+//   }
+//   return newStr;
+// }
+// function cal(stack, currentNumber, sign) {
+//   if (sign === "+") {
+//     stack.push(currentNumber);
+//   } else if (sign === "-") {
+//     stack.push(-currentNumber);
+//   } else if (sign === "/") {
+//     stack.push(stack.pop() / currentNumber);
+//   } else if (sign === "*") {
+//     stack.push(stack.pop() * currentNumber);
+//   } else if (sign === "%") {
+//     stack.push(stack.pop() % currentNumber);
+//   } else if (sign === "^") {
+//     stack.push(Math.pow(stack.pop(), currentNumber));
+//   } else if (sign === "√") {
+//     if (sign == "√") {
+//       stack.push(Math.sqrt(currentNumber));
+//     } else {
+//       let operand = 1 / stack.pop();
+//       stack.push(Math.pow(currentNumber, operand));
+//     }
+//   }
+// }
+
+
 function addToScreen(val) {
   calculatorDisplay.value += val;
 }
