@@ -13,6 +13,8 @@ const logx = document.querySelector(".log");
 const logyx = document.querySelector(".logyx");
 const ln2 = document.querySelector(".ln");
 const exV = document.querySelector(".ex");
+const sinModal = document.querySelector(".sin-modal");
+const sinhModal = document.querySelector(".sinh-modal");
 tooglrtoggle.style.backgroundColor = "#f6f6f6";
 
 // Function for Toggleing 2nd row
@@ -24,13 +26,11 @@ function toggler() {
     cube.classList.add("hide");
     tooglrtoggle.style.backgroundColor = "#f6f6f6";
     tooglrtoggle.style.color = "var(--col-black-costom)";
-
   } else {
     squre.classList.add("hide");
     cube.classList.remove("hide");
     tooglrtoggle.style.backgroundColor = "#91c1e7";
     tooglrtoggle.style.color = "#fff";
-
   }
 
   if (squrt.classList.contains("hide")) {
@@ -67,5 +67,12 @@ function toggler() {
   } else {
     ln2.classList.add("hide");
     exV.classList.remove("hide");
+  }
+  if (sinModal.classList.contains("hide")) {
+    sinModal.classList.remove("hide");
+    sinhModal.classList.add("hide");
+  } else {
+    sinModal.classList.add("hide");
+    sinhModal.classList.remove("hide");
   }
 }
