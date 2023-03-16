@@ -171,3 +171,8 @@ function submit() {
     return evalutedResult;
   }
 }
+document.onkeydown = function () {
+  if (window.event.keyCode == "13") {
+    submit();
+  }
+};
