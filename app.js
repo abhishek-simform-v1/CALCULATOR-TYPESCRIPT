@@ -61,7 +61,15 @@ function cal(stack, currentNumber, sign) {
     stack.push(stack.pop() * currentNumber); // Multiply top of the stack by current number and add to stack
   } else if (sign === "%") { // Modulo operation
     stack.push(stack.pop() % currentNumber); // Modulo top of the stack by current number and add to stack
-  } else if (sign === "^") { // Exponentiation operation
+  }
+
+  else if (sign === "log") { // Modulo operation
+    stack.push(Math.log10(stack.pop) / Math.log10(currentNumber));
+
+    // Modulo top of the stack by current number and add to stack
+  }
+
+  else if (sign === "^") { // Exponentiation operation
     stack.push(Math.pow(stack.pop(), currentNumber)); // Raise top of the stack to the power of current number and add to stack
   } else if (sign === "√") { // Square root operation
     if (sign == "√") { // Check if it is a square root operation
