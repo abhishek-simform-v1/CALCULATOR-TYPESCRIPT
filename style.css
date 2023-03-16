@@ -157,5 +157,5 @@ input.arabic {
 
 /* calculator */
 .calculator {
-  box-shadow: var(--accent-button-background) 0px 0px 500px -50px;
+  box-shadow: var(--accent-button-background) 0px 0px 70px -50px;
 }

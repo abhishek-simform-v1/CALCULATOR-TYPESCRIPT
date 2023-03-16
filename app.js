@@ -1,6 +1,3 @@
-
-
-
 // // calculator screen
 const calculatorDisplay = document.querySelector(".display-container");
 const form = document.getElementById("myForm");
@@ -41,7 +38,8 @@ function trimSpaces(str) {
   let newStr = "";
   let i = 0;
   while (i < str.length) {
-    if (str[i] !== " ") { // Check if current character is not a space
+    if (str[i] !== " ") {
+      // Check if current character is not a space
       newStr += str[i]; // If not a space, add to new string
     }
     i++; // Move to the next character in the string
@@ -51,35 +49,45 @@ function trimSpaces(str) {
 
 // This function performs the arithmetic operation based on the sign
 function cal(stack, currentNumber, sign) {
-  if (sign === "+") { // Addition operation
+  if (sign === "+") {
+    // Addition operation
     stack.push(currentNumber); // Add current number to the stack
-  } else if (sign === "-") { // Subtraction operation
+  } else if (sign === "-") {
+    // Subtraction operation
     stack.push(-currentNumber); // Add negative of current number to the stack
-  } else if (sign === "/") { // Division operation
+  } else if (sign === "/") {
+    // Division operation
     stack.push(stack.pop() / currentNumber); // Divide top of the stack by current number and add to stack
-  } else if (sign === "*") { // Multiplication operation
+  } else if (sign === "*") {
+    // Multiplication operation
     stack.push(stack.pop() * currentNumber); // Multiply top of the stack by current number and add to stack
-  } else if (sign === "%") { // Modulo operation
+  } else if (sign === "%") {
+    // Modulo operation
     stack.push(stack.pop() % currentNumber); // Modulo top of the stack by current number and add to stack
-  }
-
-  else if (sign === "log") { // Modulo operation
-    stack.push(Math.log10(stack.pop) / Math.log10(currentNumber));
-
-    // Modulo top of the stack by current number and add to stack
-  }
-
-  else if (sign === "^") { // Exponentiation operation
+  } else if (sign === "^") {
+    // Exponentiation operation
     stack.push(Math.pow(stack.pop(), currentNumber)); // Raise top of the stack to the power of current number and add to stack
-  } else if (sign === "√") { // Square root operation
-    if (sign == "√") { // Check if it is a square root operation
+  } else if (sign === "√") {
+    // Square root operation
+    if (sign == "√") {
+      // Check if it is a square root operation
       stack.push(Math.sqrt(currentNumber)); // Add square root of current number to the stack
-    } else { // Otherwise, it is a nth root operation
+    } else {
+      // Otherwise, it is a nth root operation
       let operand = 1 / stack.pop(); // Take inverse of the top of the stack
       stack.push(Math.pow(currentNumber, operand)); // Raise current number to the power of the inverse and add to stack
     }
+  } else if (sign === "log") {
+    // log operation
+    function getBaseLog(x, y) {
+      console.log(x);
+      console.log(y);
+      return Math.log(y) / Math.log(x);
+    }
+    console.log(currentNumber);
+    console.log(stack.pop());
+    stack.push(getBaseLog(getBaseLog(currentNumber, stack.pop())));
   }
-
 }
 
 // This function Evaluate the string
@@ -94,7 +102,6 @@ function calculate(expression) {
 
   // Loop through each character in the expression
   for (let i = 0; i < expression.length; i++) {
-
     // If the character is a number or decimal point, keep adding to the current number until a non-number character is encountered
     if (!isNaN(Number(expression[i]))) {
       let currentNumber = "";
@@ -132,7 +139,6 @@ function calculate(expression) {
   // Reduce the final stack to a single number and return it
   let result = stack.reduce((acc, curr) => (acc += curr), 0);
   return result;
-
 }
 function addToScreen(val) {
   calculatorDisplay.value += val;
@@ -165,4 +171,3 @@ function submit() {
     return evalutedResult;
   }
 }
-
