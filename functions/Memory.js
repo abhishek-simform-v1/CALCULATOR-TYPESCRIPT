@@ -32,5 +32,6 @@ function MemoryMinus() {
   } else {
     Memory.innerHTML =
       Number(calculatorDisplay.value) - Number(Memory.innerHTML);
+    calculatorDisplay.value = Memory.innerHTML;
   }
 }
