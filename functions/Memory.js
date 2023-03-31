@@ -20,18 +20,18 @@ function MemoryRead() {
 // memory plus
 function MemoryPlus() {
   calculatorDisplay.value =
-    Number(calculatorDisplay.value) + Number(Memory.innerHTML);
+    Number(Memory.innerHTML) + Number(calculatorDisplay.value);
   Memory.innerHTML = calculatorDisplay.value;
 }
 // memory plus
 function MemoryMinus() {
   if (isNaN(calculatorDisplay.value)) {
     calculatorDisplay.value =
-      Number(calculatorDisplay.value) - Number(Memory.innerHTML);
+      Number(Memory.innerHTML) - Number(calculatorDisplay.value);
     Memory.innerHTML = calculatorDisplay.value;
   } else {
     Memory.innerHTML =
-      Number(calculatorDisplay.value) - Number(Memory.innerHTML);
+      Number(Memory.innerHTML) - Number(calculatorDisplay.value);
     calculatorDisplay.value = Memory.innerHTML;
   }
 }

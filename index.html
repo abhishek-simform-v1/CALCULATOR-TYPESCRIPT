@@ -1,886 +1,473 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Calculator</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="icon"
-      type="image/x-icon"
-      href="./functions/apple-calculator.png"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <main
-      class="container-fluid h-100-vh d-flex justify-content-center align-items-center"
-    >
-      <section class="w-max-width gap-2 bg-gray-costom calculator">
-        <form id="myForm">
-          <!-- ---------- input Field  ---------- -->
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <input
-                class="w-100 arabic align-self-end display-container"
-                type="text"
-                placeholder="0"
-              />
-            </section>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculator</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
+  <link rel="icon" type="image/x-icon" href="./functions/apple-calculator.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="container-fluid h-100-vh d-flex justify-content-center align-items-center  ">
+    <section class="w-max-width gap-2 bg-gray-costom calculator position-relative">
+      <form id="myForm">
+        <!-- ---------- input Field  ---------- -->
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100 ">
+            <input maxlength="11" minlength="10" class="w-100 arabic align-self-end display-container" type="text"
+              placeholder="0" />
           </section>
-          <p class="col-dark-gray-costom ms-4">
-            Memory: <span class="Memory"></span>
-          </p>
+        </section>
+        <p class="col-dark-gray-costom ms-4">
+          Memory: <span class="Memory"></span>
+        </p>
 
-          <!-- ---------- Deg and F-e Button  ---------- -->
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                onclick="Deg() "
-                class="toggleDeg Deg fw-bold p-3 m-1 h-24 w-20"
-              >
-                DEG
-              </button>
-              <button onclick="FeFunc()" class="fw-bold p-3 m-1 h-24 w-20">
-                F-E
-              </button>
-              <section
-                id="error"
-                class="d-flex w-100 align-items-center justify-content-center"
-              ></section>
-            </section>
+        <!-- ---------- Deg and F-e Button  ---------- -->
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <button onclick="Deg() " class="toggleDeg Deg fw-bold p-3 m-1 h-24 w-20">
+              DEG
+            </button>
+            <button onclick="FeFunc()" class="fw-bold p-3 m-1 h-24 w-20">
+              F-E
+            </button>
+            <section id="error" class="d-flex w-100 align-items-center justify-content-center"></section>
           </section>
+        </section>
 
-          <!-- ---------- Memmory Opperation and their Buttons  ---------- -->
+        <!-- ---------- Memmory Opperation and their Buttons  ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                onclick="MemoryClear()"
-                class="fw-bolder col-dark-gray-costom p-3 m-1 h-24 w-100"
-              >
-                MC
-              </button>
-              <button
-                onclick="MemoryRead()"
-                class="fw-bolder col-dark-gray-costom p-3 m-1 h-24 w-100"
-              >
-                MR
-              </button>
-              <button
-                onclick="MemoryPlus()"
-                class="fw-bolder p-3 m-1 h-24 w-100"
-              >
-                M+
-              </button>
-              <button
-                onclick=" MemoryMinus()"
-                class="fw-bolder p-3 m-1 h-24 w-100"
-              >
-                M-
-              </button>
-              <button
-                onClick="MemorySave()"
-                class="fw-bolder p-3 m-1 h-24 w-100"
-              >
-                MS
-              </button>
-            </section>
+        <section class="d-flex w-100 align-items-center justify-content-center ">
+          <section class="d-flex w-100">
+            <button onclick="MemoryClear()" class="fw-bolder col-dark-gray-costom p-3 m-1 h-24 w-100">
+              MC
+            </button>
+            <button onclick="MemoryRead()" class="fw-bolder col-dark-gray-costom p-3 m-1 h-24 w-100">
+              MR
+            </button>
+            <button onclick="MemoryPlus()" class="fw-bolder p-3 m-1 h-24 w-100">
+              M+
+            </button>
+            <button onclick=" MemoryMinus()" class="fw-bolder p-3 m-1 h-24 w-100">
+              M-
+            </button>
+            <button onClick="MemorySave()" class="fw-bolder p-3 m-1 h-24 w-100">
+              MS
+            </button>
+
+
           </section>
+        </section>
 
-          <!-- ---------- Trigonometry and Function Drop Downs  ---------- -->
+        <!-- ---------- Trigonometry and Function Drop Downs  ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <!-- ---------- Trigonometry Dropdown  ---------- -->
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <!-- ---------- Trigonometry Dropdown  ---------- -->
 
-              <div class="h-24">
-                <div
-                  id="my-dropdown-Scintific"
-                  class="dropdown-scintific d-relative d-flex gap-1 calculator-tf-trigonometry p-3 m-1 h-24 w-100"
-                >
-                  <svg
-                    version="1.0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="15.000000pt"
-                    height="15.000000pt"
-                    viewBox="0 0 90.000000 90.000000"
-                    preserveAspectRatio="xMidYMid meet"
-                  >
-                    <g
-                      transform="translate(0.000000,90.000000) scale(0.100000,-0.100000)"
-                      fill="#000000"
-                      stroke="none"
-                    >
-                      <path
-                        d="M426 472 c-246 -247 -337 -344 -334 -358 3 -18 18 -19 358 -19 l355
+            <div class="h-24">
+              <div id="my-dropdown-Scintific"
+                class="dropdown-scintific d-relative d-flex gap-1 calculator-tf-trigonometry p-3 m-1 h-24 w-100">
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt" height="15.000000pt"
+                  viewBox="0 0 90.000000 90.000000" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(0.000000,90.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path d="M426 472 c-246 -247 -337 -344 -334 -358 3 -18 18 -19 358 -19 l355
                0 0 355 c0 347 0 355 -20 358 -15 2 -110 -88 -359 -336z m324 28 l0 -199 -72
                -3 -73 -3 -3 -72 -3 -73 -119 0 -118 0 -13 38 c-6 20 -18 46 -26 57 -12 18 2
                35 204 237 120 120 219 218 220 218 2 0 3 -90 3 -200z m0 -305 l0 -45 -45 0
                -45 0 0 45 0 45 45 0 45 0 0 -45z m-462 -15 l11 -30 -51 0 -52 0 34 35 c37 38
-               44 38 58 -5z"
-                      />
-                    </g>
-                  </svg>
+               44 38 58 -5z" />
+                  </g>
+                </svg>
 
-                  Trigonometry
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    width="20px"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                    />
-                  </svg>
-                  <div
-                    class="dropdown-menu-scitific d-flex calculator-tf-modal-1 hide d-absolute bg-white p-c-5 gap-1 align-items-center"
-                    aria-labelledby="my-dropdown-Scintific"
-                  >
-                    <div class="d-flex gap-1 sin-modal flex-column">
-                      <div class="d-flex gap-1">
-                        <button
-                          onclick="sinVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          SIN
-                        </button>
-                        <button
-                          onclick="cosVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          COS
-                        </button>
-                        <button
-                          onclick="tanVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          TAN
-                        </button>
-                      </div>
-                      <div class="d-flex gap-1">
-                        <button
-                          onclick="secVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          SEC
-                        </button>
-                        <button
-                          onclick="cscVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          CSC
-                        </button>
-                        <button
-                          onclick="cotVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          COT
-                        </button>
-                      </div>
+                Trigonometry
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" width="20px">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                </svg>
+                <div
+                  class="dropdown-menu-scitific d-flex calculator-tf-modal-1 hide d-absolute bg-white p-c-5 gap-1 align-items-center"
+                  aria-labelledby="my-dropdown-Scintific">
+                  <div class="d-flex gap-1 sin-modal flex-column">
+                    <div class="d-flex gap-1">
+                      <button onclick="sinVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        SIN
+                      </button>
+                      <button onclick="cosVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        COS
+                      </button>
+                      <button onclick="tanVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        TAN
+                      </button>
                     </div>
-                    <div class="d-flex gap-1 sinh-modal hide flex-column">
-                      <div class="d-flex gap-1">
-                        <button
-                          onclick="sinhVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          SINH
-                        </button>
-                        <button
-                          onclick="coshVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          COSH
-                        </button>
-                        <button
-                          onclick="tanhVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          TANH
-                        </button>
-                      </div>
-                      <div class="d-flex gap-1">
-                        <button
-                          onclick="sechVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          SECH
-                        </button>
-                        <button
-                          onclick="cschVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          CSCH
-                        </button>
-                        <button
-                          onclick="cothVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          COTH
-                        </button>
-                      </div>
+                    <div class="d-flex gap-1">
+                      <button onclick="secVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        SEC
+                      </button>
+                      <button onclick="cscVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        CSC
+                      </button>
+                      <button onclick="cotVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        COT
+                      </button>
+                    </div>
+                  </div>
+                  <div class="d-flex gap-1 sinh-modal hide flex-column">
+                    <div class="d-flex gap-1">
+                      <button onclick="sinhVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        SINH
+                      </button>
+                      <button onclick="coshVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        COSH
+                      </button>
+                      <button onclick="tanhVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        TANH
+                      </button>
+                    </div>
+                    <div class="d-flex gap-1">
+                      <button onclick="sechVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        SECH
+                      </button>
+                      <button onclick="cschVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        CSCH
+                      </button>
+                      <button onclick="cothVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        COTH
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
+            </div>
 
-              <!-- ---------- Functions Dropdown  ---------- -->
+            <!-- ---------- Functions Dropdown  ---------- -->
 
-              <div class="h-24">
-                <div
-                  id="my-dropdown-Scintific"
-                  class="dropdown-scintific d-relative calculator-tf-trigonometry h-24 w-100"
-                >
-                  <div>
-                    <svg
-                      version="1.0"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="15.000000pt"
-                      height="15.000000pt"
-                      viewBox="0 0 90.000000 90.000000"
-                      preserveAspectRatio="xMidYMid meet"
-                    >
-                      <g
-                        transform="translate(0.000000,90.000000) scale(0.100000,-0.100000)"
-                        fill="#000000"
-                        stroke="none"
-                      >
-                        <path
-                          d="M595 800 c-34 -11 -90 -61 -110 -99 -12 -24 -23 -61 -39 -133 -6 -26
+            <div class="h-24">
+              <div id="my-dropdown-Scintific"
+                class="dropdown-scintific d-relative calculator-tf-trigonometry h-24 w-100">
+                <div>
+                  <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt" height="15.000000pt"
+                    viewBox="0 0 90.000000 90.000000" preserveAspectRatio="xMidYMid meet">
+                    <g transform="translate(0.000000,90.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                      <path d="M595 800 c-34 -11 -90 -61 -110 -99 -12 -24 -23 -61 -39 -133 -6 -26
 -10 -28 -56 -28 -37 0 -50 -4 -50 -14 0 -8 -3 -21 -6 -30 -5 -13 3 -16 45 -16
 l52 0 -6 -37 c-4 -21 -17 -86 -30 -145 -35 -159 -60 -199 -85 -138 -24 58 -74
 76 -110 40 -47 -47 -4 -110 75 -110 146 0 218 88 256 313 l13 77 53 0 c39 0
 53 4 53 14 0 8 3 21 6 30 5 12 -5 16 -48 18 l-54 3 12 87 c7 48 19 99 27 114
 l14 26 20 -38 c25 -49 61 -64 97 -40 30 19 36 75 11 96 -20 16 -101 22 -140
-10z"
-                        />
-                      </g>
-                    </svg>
-                    Function
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke-width="1.5"
-                      stroke="currentColor"
-                      width="20px"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                      />
-                    </svg>
-                  </div>
+10z" />
+                    </g>
+                  </svg>
+                  Function
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" width="20px">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5" />
+                  </svg>
+                </div>
 
-                  <div
-                    class="dropdown-menu-scitific d-flex calculator-tf-modal-2 hide d-absolute bg-white p-c-5 gap-1 align-items-center"
-                    aria-labelledby="my-dropdown-Scintific"
-                  >
-                    <div class="d-flex gap-1 active sin flex-column">
-                      <div class="d-flex gap-1">
-                        <button
-                          onclick="absoluteVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          |x|
-                        </button>
-                        <button
-                          onclick="floorVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          ⎣x⎦
-                        </button>
-                        <button
-                          onclick="ceilVal()"
-                          class="dropdown-item-scintific bg-gray-dark-costom"
-                        >
-                          ⎡x⎤
-                        </button>
-                      </div>
+                <div
+                  class="dropdown-menu-scitific d-flex calculator-tf-modal-2 hide d-absolute bg-white p-c-5 gap-1 align-items-center"
+                  aria-labelledby="my-dropdown-Scintific">
+                  <div class="d-flex gap-1 active sin flex-column">
+                    <div class="d-flex gap-1">
+                      <button onclick="absoluteVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        |x|
+                      </button>
+                      <button onclick="floorVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        ⎣x⎦
+                      </button>
+                      <button onclick="ceilVal()" class="dropdown-item-scintific bg-gray-dark-costom">
+                        ⎡x⎤
+                      </button>
                     </div>
                   </div>
                 </div>
               </div>
-            </section>
+            </div>
           </section>
-          <!-- ---------- Pie row   ---------- -->
+        </section>
+        <!-- ---------- Pie row   ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                onclick="toggler()"
-                class="calk-2nd-toggle p-3 m-1 h-24 w-100"
-              >
-                2<sup>nd</sup>
-              </button>
-              <button
-                onclick="multByPie()"
-                type="button"
-                value="√"
-                class="p-3 fw-semibold bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                π
-              </button>
-              <button
-                onclick="multByE()"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                e
-              </button>
-              <button
-                id="nine"
-                onclick="clearScreen(this.value);"
-                type="button"
-                value=""
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                C
-              </button>
-              <button
-                onclick="deletVal()"
-                type="button"
-                value=""
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  width="24px"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 9.75L14.25 12m0 0l2.25 2.25M14.25 12l2.25-2.25M14.25 12L12 14.25m-2.58 4.92l-6.375-6.375a1.125 1.125 0 010-1.59L9.42 4.83c.211-.211.498-.33.796-.33H19.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25h-9.284c-.298 0-.585-.119-.796-.33z"
-                  />
-                </svg>
-              </button>
-            </section>
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <button onclick="toggler()" class="calk-2nd-toggle p-3 m-1 h-24 w-100">
+              2<sup>nd</sup>
+            </button>
+            <button onclick="multByPie()" type="button" value="√"
+              class="p-3 fw-semibold bg-gray-dark-costom m-1 h-24 w-100">
+              π
+            </button>
+            <button onclick="multByE()" class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              e
+            </button>
+            <button id="nine" onclick="clearScreen(this.value);" type="button" value=""
+              class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              C
+            </button>
+            <button onclick="deletVal()" type="button" value="" class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" width="24px"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                  d="M12 9.75L14.25 12m0 0l2.25 2.25M14.25 12l2.25-2.25M14.25 12L12 14.25m-2.58 4.92l-6.375-6.375a1.125 1.125 0 010-1.59L9.42 4.83c.211-.211.498-.33.796-.33H19.5a2.25 2.25 0 012.25 2.25v10.5a2.25 2.25 0 01-2.25 2.25h-9.284c-.298 0-.585-.119-.796-.33z" />
+              </svg>
+            </button>
           </section>
+        </section>
 
-          <!-- ---------- mod row   ---------- -->
+        <!-- ---------- mod row   ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                onclick="sqroftwo()"
-                class="p-3 bg-gray-dark-costom squre m-1 h-24 w-100"
-              >
-                x <sup>2</sup>
-              </button>
-              <button
-                onclick="cbrofthree()"
-                class="p-3 cube bg-gray-dark-costom m-1 h-24 w-100 hide"
-              >
-                x <sup>3</sup>
-              </button>
-              <button
-                onclick="devideByOne()"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                1/x
-              </button>
-              <button
-                onclick="absoluteVal()"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                | x |
-              </button>
-              <button
-                onclick="expo()"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                exp
-              </button>
-              <button
-                id="openParenth"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="%"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                mod
-              </button>
-            </section>
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <button onclick="sqroftwo()" class="p-3 bg-gray-dark-costom squre m-1 h-24 w-100">
+              x <sup>2</sup>
+            </button>
+            <button onclick="cbrofthree()" class="p-3 cube bg-gray-dark-costom m-1 h-24 w-100 hide">
+              x <sup>3</sup>
+            </button>
+            <button onclick="devideByOne()" class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              1/x
+            </button>
+            <button onclick="absoluteVal()" class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              | x |
+            </button>
+            <button onclick="expo()" class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              exp
+            </button>
+            <button id="openParenth" onclick="addToScreen(this.value),focusingonInput();" type="button" value="%"
+              class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              mod
+            </button>
           </section>
+        </section>
 
-          <!-- ---------- square root row   ---------- -->
+        <!-- ---------- square root row   ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                id="sqrt"
-                onclick="sqrtoftwo();addToScreen(this.value)"
-                type="button"
-                value="√"
-                class="p-3 bg-gray-dark-costom squrt m-1 h-24 w-100"
-              >
-                <sup>2</sup>√
-              </button>
-              <button
-                id="curt"
-                onclick="cbrtofthree();addToScreen(this.value)"
-                type="button"
-                value="√"
-                class="p-3 sqrt hide bg-gray-dark-costom curt m-1 h-24 w-100"
-              >
-                <sup>3</sup>√
-              </button>
-              <button
-                id="openParenth"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="("
-                class="p-3 bg-gray-dark-costom openParenth m-1 h-24 w-100"
-              >
-                (
-              </button>
-              <button
-                id="openParenth"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value=")"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                )
-              </button>
-              <button
-                id="openParenth"
-                onclick="fact();"
-                type="button"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                n!
-              </button>
-              <button
-                id="devide"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="/"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                <svg
-                  version="1.0"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12.000000pt"
-                  height="12.000000pt"
-                  viewBox="0 0 512.000000 512.000000"
-                  preserveAspectRatio="xMidYMid meet"
-                >
-                  <g
-                    transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                    fill="#000000"
-                    stroke="none"
-                  >
-                    <path
-                      d="M2412 4736 c-97 -24 -199 -83 -277 -160 -115 -114 -171 -238 -182
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <button id="sqrt" onclick="sqrtoftwo();addToScreen(this.value),focusingonInput()" type="button" value="√"
+              class="p-3 bg-gray-dark-costom squrt m-1 h-24 w-100">
+              <sup>2</sup>√
+            </button>
+            <button id="curt" onclick="cbrtofthree();addToScreen(this.value),focusingonInput()" type="button" value="√"
+              class="p-3 sqrt hide bg-gray-dark-costom curt m-1 h-24 w-100">
+              <sup>3</sup>√
+            </button>
+            <button id="openParenth" onclick="addToScreen(this.value),focusingonInput();" type="button" value="("
+              class="p-3 bg-gray-dark-costom openParenth m-1 h-24 w-100">
+              (
+            </button>
+            <button id="openParenth" onclick="addToScreen(this.value),focusingonInput();" type="button" value=")"
+              class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              )
+            </button>
+            <button id="openParenth" onclick="fact();" type="button" class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              n!
+            </button>
+            <button id="devide" onclick="addToScreen(this.value),focusingonInput();" type="button" value="/"
+              class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="12.000000pt" height="12.000000pt"
+                viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                  <path d="M2412 4736 c-97 -24 -199 -83 -277 -160 -115 -114 -171 -238 -182
 -396 -18 -286 175 -550 457 -625 71 -19 229 -19 300 0 222 59 399 244 446 466
 30 139 4 300 -69 429 -50 90 -161 192 -259 238 -45 22 -107 45 -136 51 -70 14
--213 13 -280 -3z"
-                    />
-                    <path
-                      d="M0 2560 l0 -240 2560 0 2560 0 0 240 0 240 -2560 0 -2560 0 0 -240z"
-                    />
-                    <path
-                      d="M2405 1565 c-218 -60 -394 -246 -441 -466 -30 -139 -4 -300 69 -429
+-213 13 -280 -3z" />
+                  <path d="M0 2560 l0 -240 2560 0 2560 0 0 240 0 240 -2560 0 -2560 0 0 -240z" />
+                  <path d="M2405 1565 c-218 -60 -394 -246 -441 -466 -30 -139 -4 -300 69 -429
 50 -90 161 -192 259 -238 98 -48 161 -62 268 -62 168 0 307 57 424 173 116
-115 172 238 183 397 18 286 -175 550 -457 625 -68 18 -237 18 -305 0z"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </section>
+115 172 238 183 397 18 286 -175 550 -457 625 -68 18 -237 18 -305 0z" />
+                </g>
+              </svg>
+            </button>
           </section>
+        </section>
 
-          <!-- ----------  X power Y row   ---------- -->
+        <!-- ----------  X power Y row   ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="^"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100 power"
-              >
-                x<sup>y</sup>
-              </button>
-              <button
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="√"
-                class="p-3 bg-gray-dark-costom hide m-1 h-24 w-100 rootyx"
-              >
-                <sup>y</sup>√x
-              </button>
-              <button
-                id="seven"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="7"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100"
-              >
-                7
-              </button>
-              <button
-                id="eight"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="8"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100"
-              >
-                8
-              </button>
-              <button
-                id="nine"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="9"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100"
-              >
-                9
-              </button>
-              <button
-                id="mul"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="*"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                <svg
-                  version="1.0"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="15.000000pt"
-                  height="15.000000pt"
-                  viewBox="0 0 512.000000 512.000000"
-                  preserveAspectRatio="xMidYMid meet"
-                >
-                  <g
-                    transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                    fill="#000000"
-                    stroke="none"
-                  >
-                    <path
-                      d="M1055 3990 l-50 -50 713 -713 c391 -391 712 -717 712 -722 0 -6 -319
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <button onclick="addToScreen(this.value),focusingonInput();" type="button" value="^"
+              class="p-3 bg-gray-dark-costom m-1 h-24 w-100 power">
+              x<sup>y</sup>
+            </button>
+            <button onclick="addToScreen(this.value),focusingonInput();" type="button" value="√"
+              class="p-3 bg-gray-dark-costom hide m-1 h-24 w-100 rootyx">
+              <sup>y</sup>√x
+            </button>
+            <button id="seven" onclick="addToScreen(this.value),focusingonInput();" type="button" value="7"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100">
+              7
+            </button>
+            <button id="eight" onclick="addToScreen(this.value),focusingonInput();" type="button" value="8"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100">
+              8
+            </button>
+            <button id="nine" onclick="addToScreen(this.value),focusingonInput();" type="button" value="9"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100">
+              9
+            </button>
+            <button id="mul" onclick="addToScreen(this.value),focusingonInput();" type="button" value="*"
+              class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="15.000000pt" height="15.000000pt"
+                viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                  <path d="M1055 3990 l-50 -50 713 -713 c391 -391 712 -717 712 -722 0 -6 -319
              -330 -710 -720 -390 -390 -710 -715 -710 -720 0 -6 20 -31 45 -55 l45 -45 720
              720 720 720 718 -717 717 -717 47 45 c27 25 48 48 48 52 0 4 -322 329 -715
              722 l-715 715 717 717 718 718 -50 50 -50 50 -717 -717 -718 -718 -718 718
-             -717 717 -50 -50z"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </section>
+             -717 717 -50 -50z" />
+                </g>
+              </svg>
+            </button>
           </section>
+        </section>
 
-          <!-- ----------  10 power x row   ---------- -->
+        <!-- ----------  10 power x row   ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                id="powerten"
-                onclick="powerOften()"
-                type="button"
-                class="p-3 bg-gray-dark-costom powerten m-1 h-24 w-100"
-              >
-                10<sup>x</sup>
-              </button>
-              <button
-                id="powertwo"
-                onclick="powerOftwo()"
-                type="button"
-                class="p-3 bg-gray-dark-costom powertwo hide active m-1 h-24 w-100"
-              >
-                2<sup>x</sup>
-              </button>
-              <button
-                id="four"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="4"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100 number"
-              >
-                4
-              </button>
-              <button
-                id="five"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="5"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100 number"
-              >
-                5
-              </button>
-              <button
-                id="six"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="6"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100 number"
-              >
-                6
-              </button>
-              <button
-                id="sub"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="-"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  width="20px"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M19.5 12h-15"
-                  />
-                </svg>
-              </button>
-            </section>
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <button id="powerten" onclick="powerOften()" type="button"
+              class="p-3 bg-gray-dark-costom powerten m-1 h-24 w-100">
+              10<sup>x</sup>
+            </button>
+            <button id="powertwo" onclick="powerOftwo()" type="button"
+              class="p-3 bg-gray-dark-costom powertwo hide active m-1 h-24 w-100">
+              2<sup>x</sup>
+            </button>
+            <button id="four" onclick="addToScreen(this.value),focusingonInput();" type="button" value="4"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100 number">
+              4
+            </button>
+            <button id="five" onclick="addToScreen(this.value),focusingonInput();" type="button" value="5"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100 number">
+              5
+            </button>
+            <button id="six" onclick="addToScreen(this.value),focusingonInput()" type="button" value="6"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100 number">
+              6
+            </button>
+            <button id="sub" onclick="addToScreen(this.value),focusingonInput();" type="button" value="-"
+              class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" width="20px">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+              </svg>
+            </button>
           </section>
+        </section>
 
-          <!-- ----------  log row   ---------- -->
+        <!-- ----------  log row   ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                onclick="log()"
-                class="p-3 bg-gray-dark-costom log m-1 h-24 w-100"
-              >
-                log
-              </button>
-              <button
-                id="logxy"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="log"
-                class="hide p-3 bg-gray-dark-costom logyx m-1 h-24 w-100"
-              >
-                log<sub>y</sub>x
-              </button>
-              <button
-                id="one"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="1"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100"
-              >
-                1
-              </button>
-              <button
-                id="two"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="2"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100"
-              >
-                2
-              </button>
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <button onclick="log()" class="p-3 bg-gray-dark-costom log m-1 h-24 w-100">
+              log
+            </button>
+            <button id="logxy" onclick="addToScreen(this.value),focusingonInput();" type="button" value="log"
+              class="hide p-3 bg-gray-dark-costom logyx m-1 h-24 w-100">
+              log<sub>y</sub>x
+            </button>
+            <button id="one" onclick="addToScreen(this.value),focusingonInput();" type="button" value="1"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100">
+              1
+            </button>
+            <button id="two" onclick="addToScreen(this.value),focusingonInput();" type="button" value="2"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100">
+              2
+            </button>
 
-              <button
-                id="two"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="3"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100"
-              >
-                3
-              </button>
-              <button
-                id="plus"
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="+"
-                class="p-3 bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                <svg
-                  version="1.0"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="12.000000pt"
-                  height="12.000000pt"
-                  viewBox="0 0 512.000000 512.000000"
-                  preserveAspectRatio="xMidYMid meet"
-                >
-                  <g
-                    transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                    fill="#000000"
-                    stroke="none"
-                  >
-                    <path
-                      d="M2501 5102 c-19 -10 -43 -34 -53 -53 -17 -32 -18 -89 -18 -1196 l0
+            <button id="two" onclick="addToScreen(this.value),focusingonInput();" type="button" value="3"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100">
+              3
+            </button>
+            <button id="plus" onclick="addToScreen(this.value),focusingonInput();" type="button" value="+"
+              class="p-3 bg-gray-dark-costom m-1 h-24 w-100">
+              <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="12.000000pt" height="12.000000pt"
+                viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                  <path d="M2501 5102 c-19 -10 -43 -34 -53 -53 -17 -32 -18 -89 -18 -1196 l0
 -1163 -1163 0 c-1107 0 -1164 -1 -1196 -18 -38 -20 -71 -73 -71 -112 0 -39 33
 -92 71 -112 32 -17 89 -18 1196 -18 l1163 0 0 -1163 c0 -1107 1 -1164 18
 -1196 20 -38 73 -71 112 -71 39 0 92 33 112 71 17 32 18 89 18 1196 l0 1163
 1163 0 c1107 0 1164 1 1196 18 38 20 71 73 71 112 0 39 -33 92 -71 112 -32 17
 -89 18 -1196 18 l-1163 0 0 1163 c0 1107 -1 1164 -18 1196 -20 38 -73 71 -112
-71 -14 0 -41 -8 -59 -18z"
-                    />
-                  </g>
-                </svg>
-              </button>
-            </section>
+71 -14 0 -41 -8 -59 -18z" />
+                </g>
+              </svg>
+            </button>
           </section>
+        </section>
 
-          <!-- ---------- ln row   ---------- -->
+        <!-- ---------- ln row   ---------- -->
 
-          <section
-            class="d-flex w-100 align-items-center justify-content-center"
-          >
-            <section class="d-flex w-100">
-              <button
-                onclick=" ln()"
-                class="p-3 bg-gray-dark-costom hide ln m-1 h-24 w-100"
-              >
-                ln
-              </button>
-              <button
-                onclick="powerOfEv()"
-                class="p-3 ex bg-gray-dark-costom m-1 h-24 w-100"
-              >
-                e<sup>x</sup>
-              </button>
-              <button
-                onclick="handlePlusMinus()"
-                class="p-3 bg-white m-1 h-24 w-100"
-              >
-                <sup>
-                  <svg
-                    version="1.0"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="8.000000pt"
-                    height="8.000000pt"
-                    viewBox="0 0 512.000000 512.000000"
-                    preserveAspectRatio="xMidYMid meet"
-                  >
-                    <g
-                      transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)"
-                      fill="#000000"
-                      stroke="none"
-                    >
-                      <path
-                        d="M2501 5102 c-19 -10 -43 -34 -53 -53 -17 -32 -18 -89 -18 -1196 l0
+        <section class="d-flex w-100 align-items-center justify-content-center">
+          <section class="d-flex w-100">
+            <button onclick=" ln()" class="p-3 bg-gray-dark-costom hide ln m-1 h-24 w-100">
+              ln
+            </button>
+            <button onclick="powerOfEv()" class="p-3 ex bg-gray-dark-costom m-1 h-24 w-100">
+              e<sup>x</sup>
+            </button>
+            <button onclick="handlePlusMinus()" class="p-3 bg-white m-1 h-24 w-100">
+              <sup>
+                <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="8.000000pt" height="8.000000pt"
+                  viewBox="0 0 512.000000 512.000000" preserveAspectRatio="xMidYMid meet">
+                  <g transform="translate(0.000000,512.000000) scale(0.100000,-0.100000)" fill="#000000" stroke="none">
+                    <path d="M2501 5102 c-19 -10 -43 -34 -53 -53 -17 -32 -18 -89 -18 -1196 l0
 -1163 -1163 0 c-1107 0 -1164 -1 -1196 -18 -38 -20 -71 -73 -71 -112 0 -39 33
 -92 71 -112 32 -17 89 -18 1196 -18 l1163 0 0 -1163 c0 -1107 1 -1164 18
 -1196 20 -38 73 -71 112 -71 39 0 92 33 112 71 17 32 18 89 18 1196 l0 1163
 1163 0 c1107 0 1164 1 1196 18 38 20 71 73 71 112 0 39 -33 92 -71 112 -32 17
 -89 18 -1196 18 l-1163 0 0 1163 c0 1107 -1 1164 -18 1196 -20 38 -73 71 -112
-71 -14 0 -41 -8 -59 -18z"
-                      />
-                    </g></svg></sup
-                >/<sub>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke-width="1.5"
-                    stroke="currentColor"
-                    width="15px"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M19.5 12h-15"
-                    /></svg
-                ></sub>
-              </button>
-              <button
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="0"
-                class="p-3 fw-bolder bg-white m-1 h-24 w-100"
-              >
-                0
-              </button>
-              <button
-                onclick="addToScreen(this.value);"
-                type="button"
-                value="."
-                class="p-3 bg-white fw-bolder m-1 h-24 w-100"
-              >
-                .
-              </button>
-              <button
-                id="plus"
-                onclick="handleForm(); "
-                type="submit"
-                value="submit"
-                class="p-3 fw-bolder bg-blue-costom m-1 h-24 w-100"
-              >
-                <svg
-                  width="18px"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 448 512"
-                  fill="#fff"
-                >
-                  <path
-                    d="M32 128c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zm0 192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z"
-                  />
-                </svg>
-              </button>
-            </section>
+71 -14 0 -41 -8 -59 -18z" />
+                  </g>
+                </svg></sup>/<sub>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" width="15px">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15" />
+                </svg></sub>
+            </button>
+            <button onclick="addToScreen(this.value),focusingonInput();" type="button" value="0"
+              class="p-3 fw-bolder bg-white m-1 h-24 w-100">
+              0
+            </button>
+            <button onclick="addToScreen(this.value),focusingonInput();" type="button" value="."
+              class="p-3 bg-white fw-bolder m-1 h-24 w-100">
+              .
+            </button>
+            <button id="plus" onclick="handleForm(); " type="submit" value="submit"
+              class="p-3 fw-bolder bg-blue-costom m-1 h-24 w-100">
+              <svg width="18px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="#fff">
+                <path
+                  d="M32 128c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H32zm0 192c-17.7 0-32 14.3-32 32s14.3 32 32 32H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H32z" />
+              </svg>
+            </button>
           </section>
-        </form>
-      </section>
-    </main>
-    <script src="./app.js"></script>
-    <script src="./functions/directOperation.js"></script>
-    <script src="./functions/toggle.js"></script>
-    <script src="./functions/TrigonoFunctions.js"></script>
-    <script src="./functions/Memory.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
-      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
-      integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
-      crossorigin="anonymous"
-    ></script>
-  </body>
+        </section>
+      </form>
+    </section>
+  </main>
+  <script src="./app.js"></script>
+  <script src="./functions/directOperation.js"></script>
+  <script src="./functions/toggle.js"></script>
+  <script src="./functions/TrigonoFunctions.js"></script>
+  <script src="./functions/Memory.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+    integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"
+    integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD"
+    crossorigin="anonymous"></script>
+</body>
+
 </html>

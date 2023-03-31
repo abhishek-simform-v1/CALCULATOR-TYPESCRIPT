@@ -45,7 +45,7 @@ function log() {
 // log base 2 function
 function ln() {
   CheckDisplayVal();
-  calculatorDisplay.value = Math.log2(res);
+  calculatorDisplay.value = Math.log(res);
   calculatorDisplay.value.pop();
 }
 // 1/x function
@@ -94,6 +94,8 @@ function Deg() {
 
         Deg.classList.remove("Deg");
       } else {
+        Deg.style.backgroundColor = "#efefef";
+        Deg.style.color = "#000";
         calculatorDisplay.value = ((res * Math.PI) / 180).toFixed(2);
         Deg.innerHTML = "DEG";
         Deg.classList.add("Deg");
@@ -195,4 +197,7 @@ function handlePlusMinus() {
   CheckDisplayVal();
   calculatorDisplay.value = `-(${res})`;
   console.log(calculatorDisplay.value);
+}
+function focusingonInput() {
+  calculatorDisplay.focus();
 }

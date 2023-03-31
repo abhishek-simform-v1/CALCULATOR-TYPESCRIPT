@@ -69,14 +69,11 @@ function cal(stack, currentNumber, sign) {
     stack.push(Math.pow(stack.pop(), currentNumber)); // Raise top of the stack to the power of current number and add to stack
   } else if (sign === "√") {
     // Square root operation
-    if (sign == "√") {
-      // Check if it is a square root operation
-      stack.push(Math.sqrt(currentNumber)); // Add square root of current number to the stack
-    } else {
-      // Otherwise, it is a nth root operation
-      let operand = 1 / stack.pop(); // Take inverse of the top of the stack
-      stack.push(Math.pow(currentNumber, operand)); // Raise current number to the power of the inverse and add to stack
-    }
+
+    let operand = 1 / currentNumber;
+    console.log("operand", operand);
+    console.log(stack.pop()); // Take inverse of the top of the stack
+    stack.push(Math.pow(stack.pop(), operand)); // Raise current number to the power of the inverse and add to stack
   } else if (sign === "log") {
     // log operation
     function getBaseLog(x, y) {
@@ -171,8 +168,9 @@ function submit() {
     return evalutedResult;
   }
 }
-document.onkeydown = function () {
+document.onkeydown = function (e) {
   if (window.event.keyCode == "13") {
     submit();
+    e.preventDefault();
   }
 };
