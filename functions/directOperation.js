@@ -113,7 +113,7 @@ function Deg() {
 //F-e function
 function FeFunc() {
   CheckDisplayVal();
-  calculatorDisplay.value = res.toExponential(10).toString();
+  calculatorDisplay.value = res.toExponential(2).toString();
 }
 
 // log base 2 function
