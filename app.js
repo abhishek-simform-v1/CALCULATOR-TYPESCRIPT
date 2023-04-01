@@ -15,7 +15,7 @@ const dropdownModalTriangle = document.querySelector(".calculator-tf-modal-1");
 const dropdownModalFunction = document.querySelector(".calculator-tf-modal-2");
 
 const error = document.getElementById("error");
-
+let evaluatedResult;
 dropdownTriangle.addEventListener("click", () => {
   dropdownModalTriangle.classList.contains("hide")
     ? dropdownModalTriangle.classList.remove("hide")
@@ -49,6 +49,7 @@ function trimSpaces(str) {
 
 // This function performs the arithmetic operation based on the sign
 function cal(stack, currentNumber, sign) {
+
   if (sign === "+") {
     // Addition operation
     stack.push(currentNumber); // Add current number to the stack
@@ -67,23 +68,13 @@ function cal(stack, currentNumber, sign) {
   } else if (sign === "^") {
     // Exponentiation operation
     stack.push(Math.pow(stack.pop(), currentNumber)); // Raise top of the stack to the power of current number and add to stack
+  } else if (sign === "g") {
+    let logAnswer = Math.log(stack.pop()) / Math.log(currentNumber);
+    stack.push(logAnswer);
   } else if (sign === "√") {
     // Square root operation
-
-    let operand = 1 / currentNumber;
-    console.log("operand", operand);
-    console.log(stack.pop()); // Take inverse of the top of the stack
-    stack.push(Math.pow(stack.pop(), operand)); // Raise current number to the power of the inverse and add to stack
-  } else if (sign === "log") {
-    // log operation
-    function getBaseLog(x, y) {
-      console.log(x);
-      console.log(y);
-      return Math.log(y) / Math.log(x);
-    }
-    console.log(currentNumber);
-    console.log(stack.pop());
-    stack.push(getBaseLog(getBaseLog(currentNumber, stack.pop())));
+    let operand = 1 / stack.pop();
+    stack.push(Math.pow(currentNumber, operand)); // Raise current number to the power of the inverse and add to stack
   }
 }
 
@@ -155,8 +146,8 @@ function handleForm(event) {
   submit();
 }
 function submit() {
-  evalutedResult = calculate(calculatorDisplay.value);
-  if (isNaN(evalutedResult)) {
+  evaluatedResult = calculate(calculatorDisplay.value);
+  if (isNaN(evaluatedResult)) {
     calculatorDisplay.value = "";
     error.style.color = "#ff0000";
     error.innerHTML = "<p>not a number</p>";
@@ -164,8 +155,8 @@ function submit() {
       error.innerHTML = "";
     }, 1000);
   } else {
-    calculatorDisplay.value = evalutedResult;
-    return evalutedResult;
+    calculatorDisplay.value = evaluatedResult;
+    return evaluatedResult;
   }
 }
 document.onkeydown = function (e) {
