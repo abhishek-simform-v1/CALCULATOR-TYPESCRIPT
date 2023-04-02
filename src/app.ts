@@ -1,44 +1,44 @@
 // // calculator screen
-const calculatorDisplay = document.querySelector(".display-container");
-const form = document.getElementById("myForm");
-const mydropDownMenu = document.querySelector(".dropdown-menu-scitific");
-const mydropdown = document.getElementById("my-dropdown-Scintific");
-const mydropdownfunc = document.querySelector(".d-function");
+const calculatorDisplay = document.querySelector('.display-container');
+const form = document.getElementById('myForm');
+const mydropDownMenu = document.querySelector('.dropdown-menu-scitific');
+const mydropdown = document.getElementById('my-dropdown-Scintific');
+const mydropdownfunc = document.querySelector('.d-function');
 const dropdownFunctions = document.querySelectorAll(
-  ".calculator-tf-trigonometry"
+  '.calculator-tf-trigonometry'
 );
 const dropdownTriangle = dropdownFunctions[0];
 const dropdownFunction = dropdownFunctions[1];
-const displayInput = document.querySelector("#display-input");
+const displayInput = document.querySelector('#display-input');
 
-const dropdownModalTriangle = document.querySelector(".calculator-tf-modal-1");
-const dropdownModalFunction = document.querySelector(".calculator-tf-modal-2");
+const dropdownModalTriangle = document.querySelector('.calculator-tf-modal-1');
+const dropdownModalFunction = document.querySelector('.calculator-tf-modal-2');
 
-const error = document.getElementById("error");
-
-dropdownTriangle.addEventListener("click", () => {
-  dropdownModalTriangle.classList.contains("hide")
-    ? dropdownModalTriangle.classList.remove("hide")
-    : dropdownModalTriangle.classList.add("hide");
-  if (!dropdownModalFunction.classList.contains("hide")) {
-    dropdownModalFunction.classList.add("hide");
+const error = document.getElementById('error');
+let evalutedResult;
+dropdownTriangle.addEventListener('click', () => {
+  dropdownModalTriangle.classList.contains('hide')
+    ? dropdownModalTriangle.classList.remove('hide')
+    : dropdownModalTriangle.classList.add('hide');
+  if (!dropdownModalFunction.classList.contains('hide')) {
+    dropdownModalFunction.classList.add('hide');
   }
 });
-dropdownFunction.addEventListener("click", () => {
-  dropdownModalFunction.classList.contains("hide")
-    ? dropdownModalFunction.classList.remove("hide")
-    : dropdownModalFunction.classList.add("hide");
-  if (!dropdownModalTriangle.classList.contains("hide")) {
-    dropdownModalTriangle.classList.add("hide");
+dropdownFunction.addEventListener('click', () => {
+  dropdownModalFunction.classList.contains('hide')
+    ? dropdownModalFunction.classList.remove('hide')
+    : dropdownModalFunction.classList.add('hide');
+  if (!dropdownModalTriangle.classList.contains('hide')) {
+    dropdownModalTriangle.classList.add('hide');
   }
 });
 
 // This function removes all spaces from a string
 function trimSpaces(str) {
-  let newStr = "";
+  let newStr = '';
   let i = 0;
   while (i < str.length) {
-    if (str[i] !== " ") {
+    if (str[i] !== ' ') {
       // Check if current character is not a space
       newStr += str[i]; // If not a space, add to new string
     }
@@ -49,32 +49,32 @@ function trimSpaces(str) {
 
 // This function performs the arithmetic operation based on the sign
 function cal(stack, currentNumber, sign) {
-  if (sign === "+") {
+  if (sign === '+') {
     // Addition operation
     stack.push(currentNumber); // Add current number to the stack
-  } else if (sign === "-") {
+  } else if (sign === '-') {
     // Subtraction operation
     stack.push(-currentNumber); // Add negative of current number to the stack
-  } else if (sign === "/") {
+  } else if (sign === '/') {
     // Division operation
     stack.push(stack.pop() / currentNumber); // Divide top of the stack by current number and add to stack
-  } else if (sign === "*") {
+  } else if (sign === '*') {
     // Multiplication operation
     stack.push(stack.pop() * currentNumber); // Multiply top of the stack by current number and add to stack
-  } else if (sign === "%") {
+  } else if (sign === '%') {
     // Modulo operation
     stack.push(stack.pop() % currentNumber); // Modulo top of the stack by current number and add to stack
-  } else if (sign === "^") {
+  } else if (sign === '^') {
     // Exponentiation operation
     stack.push(Math.pow(stack.pop(), currentNumber)); // Raise top of the stack to the power of current number and add to stack
-  } else if (sign === "√") {
+  } else if (sign === '√') {
     // Square root operation
 
     let operand = 1 / currentNumber;
-    console.log("operand", operand);
+    console.log('operand', operand);
     console.log(stack.pop()); // Take inverse of the top of the stack
     stack.push(Math.pow(stack.pop(), operand)); // Raise current number to the power of the inverse and add to stack
-  } else if (sign === "log") {
+  } else if (sign === 'log') {
     // log operation
     function getBaseLog(x, y) {
       console.log(x);
@@ -95,14 +95,14 @@ function calculate(expression) {
   // Initialize a stack to hold numbers, a stack to hold sign pairs, and a default sign of '+'
   let stack = [];
   let stackSignPair = [];
-  let sign = "+";
+  let sign = '+';
 
   // Loop through each character in the expression
   for (let i = 0; i < expression.length; i++) {
     // If the character is a number or decimal point, keep adding to the current number until a non-number character is encountered
     if (!isNaN(Number(expression[i]))) {
-      let currentNumber = "";
-      while (!isNaN(Number(expression[i])) || expression[i] === ".") {
+      let currentNumber = '';
+      while (!isNaN(Number(expression[i])) || expression[i] === '.') {
         currentNumber += expression[i];
         i++;
       }
@@ -113,13 +113,13 @@ function calculate(expression) {
       cal(stack, currentNumber, sign);
 
       // If the character is an opening parenthesis, push the current stack and sign onto the sign pair stack and reset the current stack and sign
-    } else if (expression[i] === "(") {
+    } else if (expression[i] === '(') {
       stackSignPair.push([stack, sign]);
       stack = [];
-      sign = "+";
+      sign = '+';
 
       // If the character is a closing parenthesis, reduce the current stack to a single number and pop the last sign pair from the sign pair stack to continue the calculation
-    } else if (expression[i] === ")") {
+    } else if (expression[i] === ')') {
       let currentNumber = stack.reduce((acc, curr) => (acc += curr), 0);
       let getPair = stackSignPair.pop();
       [stack, sign] = getPair;
@@ -149,7 +149,7 @@ function deletVal() {
 function clearScreen(val) {
   calculatorDisplay.value = val;
 }
-form.addEventListener("submit", handleForm);
+form.addEventListener('submit', handleForm);
 function handleForm(event) {
   event.preventDefault();
   submit();
@@ -157,11 +157,11 @@ function handleForm(event) {
 function submit() {
   evalutedResult = calculate(calculatorDisplay.value);
   if (isNaN(evalutedResult)) {
-    calculatorDisplay.value = "";
-    error.style.color = "#ff0000";
-    error.innerHTML = "<p>not a number</p>";
+    calculatorDisplay.value = '';
+    error.style.color = '#ff0000';
+    error.innerHTML = '<p>not a number</p>';
     setTimeout(() => {
-      error.innerHTML = "";
+      error.innerHTML = '';
     }, 1000);
   } else {
     calculatorDisplay.value = evalutedResult;
@@ -169,7 +169,7 @@ function submit() {
   }
 }
 document.onkeydown = function (e) {
-  if (window.event.keyCode == "13") {
+  if (window.event.keyCode == '13') {
     submit();
     e.preventDefault();
   }
