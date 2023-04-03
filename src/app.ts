@@ -1,21 +1,23 @@
 // // calculator screen
-const calculatorDisplay = document.querySelector('.display-container');
-const form = document.getElementById('myForm');
-const mydropDownMenu = document.querySelector('.dropdown-menu-scitific');
-const mydropdown = document.getElementById('my-dropdown-Scintific');
-const mydropdownfunc = document.querySelector('.d-function');
-const dropdownFunctions = document.querySelectorAll(
+const calculatorDisplay: Element | null = document.querySelector('.display-container');
+const form: Element | null = document.getElementById('myForm');
+const mydropDownMenu: Element | null = document.querySelector('.dropdown-menu-scitific');
+const mydropdown: Element | null = document.getElementById('my-dropdown-Scintific');
+const mydropdownfunc: Element | null = document.querySelector('.d-function');
+const dropdownFunctions: NodeListOf<Element> = document.querySelectorAll(
   '.calculator-tf-trigonometry'
 );
-const dropdownTriangle = dropdownFunctions[0];
+
+const dropdownTriangle: Element = dropdownFunctions[0];
 const dropdownFunction = dropdownFunctions[1];
-const displayInput = document.querySelector('#display-input');
 
-const dropdownModalTriangle = document.querySelector('.calculator-tf-modal-1');
-const dropdownModalFunction = document.querySelector('.calculator-tf-modal-2');
+const dropdownModalTriangle: HTMLElement | null = document.querySelector('.calculator-tf-modal-1');
+const dropdownModalFunction: HTMLElement | null = document.querySelector('.calculator-tf-modal-2');
+const error: HTMLElement | null = document.getElementById('error');
 
-const error = document.getElementById('error');
-let evalutedResult;
+console.log(dropdownFunctions[0]);
+
+let evalutedResult: number;
 dropdownTriangle.addEventListener('click', () => {
   dropdownModalTriangle.classList.contains('hide')
     ? dropdownModalTriangle.classList.remove('hide')

@@ -1,6 +1,6 @@
 const Memory = document.querySelector(".Memory");
 //memory save
-function MemorySave() {
+function MemorySave(): void {
   let res;
   if (isNaN(Number(calculatorDisplay.value))) {
     res = submit();
@@ -10,21 +10,21 @@ function MemorySave() {
   Memory.innerHTML = res;
 }
 //memory clear
-function MemoryClear() {
+function MemoryClear(): void {
   Memory.innerHTML = "";
 }
 // memory Read
-function MemoryRead() {
+function MemoryRead(): void {
   calculatorDisplay.value = Memory.innerHTML;
 }
 // memory plus
-function MemoryPlus() {
+function MemoryPlus(): void {
   calculatorDisplay.value =
     Number(Memory.innerHTML) + Number(calculatorDisplay.value);
   Memory.innerHTML = calculatorDisplay.value;
 }
 // memory plus
-function MemoryMinus() {
+function MemoryMinus(): void {
   if (isNaN(calculatorDisplay.value)) {
     calculatorDisplay.value =
       Number(Memory.innerHTML) - Number(calculatorDisplay.value);

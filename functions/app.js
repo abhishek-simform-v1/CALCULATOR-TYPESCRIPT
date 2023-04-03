@@ -8,10 +8,10 @@ const mydropdownfunc = document.querySelector('.d-function');
 const dropdownFunctions = document.querySelectorAll('.calculator-tf-trigonometry');
 const dropdownTriangle = dropdownFunctions[0];
 const dropdownFunction = dropdownFunctions[1];
-const displayInput = document.querySelector('#display-input');
 const dropdownModalTriangle = document.querySelector('.calculator-tf-modal-1');
 const dropdownModalFunction = document.querySelector('.calculator-tf-modal-2');
 const error = document.getElementById('error');
+console.log(dropdownFunctions[0]);
 let evalutedResult;
 dropdownTriangle.addEventListener('click', () => {
     dropdownModalTriangle.classList.contains('hide')
