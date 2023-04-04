@@ -1,24 +1,25 @@
-const tooglrtoggle = document.querySelector(".calk-2nd-toggle");
-const squre = document.querySelector(".squre");
-const cube = document.querySelector(".cube");
-const squrt = document.querySelector(".squrt");
-const curt = document.querySelector(".curt");
-const power = document.querySelector(".power");
-const rootyx = document.querySelector(".rootyx");
-const powerten = document.querySelector(".powerten");
-const powertwo = document.querySelector(".powertwo");
-const logx = document.querySelector(".log");
-const logyx = document.querySelector(".logyx");
-const ln2 = document.querySelector(".ln");
-const exV = document.querySelector(".ex");
-const sinModal = document.querySelector(".sin-modal");
-const sinhModal = document.querySelector(".sinh-modal");
+const tooglrtoggle: HTMLButtonElement = document.querySelector(".calk-2nd-toggle")!;
+const squre: HTMLButtonElement = document.querySelector(".squre")!;
+const cube: HTMLButtonElement = document.querySelector(".cube")!;
+const squrt: HTMLButtonElement = document.querySelector(".squrt")!;
+const curt: HTMLButtonElement = document.querySelector(".curt")!;
+const power: HTMLButtonElement = document.querySelector(".power")!;
+const rootyx: HTMLButtonElement = document.querySelector(".rootyx")!;
+const powerten: HTMLButtonElement = document.querySelector(".powerten")!;
+const powertwo: HTMLButtonElement = document.querySelector(".powertwo")!;
+const logx: HTMLButtonElement = document.querySelector(".log")!;
+const logyx: HTMLButtonElement = document.querySelector(".logyx")!;
+const ln2: HTMLButtonElement = document.querySelector(".ln")!;
+const exV: HTMLButtonElement = document.querySelector(".ex")!;
+const sinModal: HTMLElement = document.querySelector(".sin-modal")!;
+const sinhModal: HTMLElement = document.querySelector(".sinh-modal")!;
 tooglrtoggle.style.backgroundColor = "#f6f6f6";
 
 // Function for Toggleing 2nd row
-function toggler() {
-  event.preventDefault();
-
+function toggler(event?: Event): void {
+  if (event) {
+    event.preventDefault();
+  }  // rest of your code here
   if (squre.classList.contains("hide")) {
     squre.classList.remove("hide");
     cube.classList.add("hide");
@@ -74,3 +75,4 @@ function toggler() {
     sinhModal.classList.remove("hide");
   }
 }
+

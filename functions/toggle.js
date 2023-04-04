@@ -16,8 +16,10 @@ const sinModal = document.querySelector(".sin-modal");
 const sinhModal = document.querySelector(".sinh-modal");
 tooglrtoggle.style.backgroundColor = "#f6f6f6";
 // Function for Toggleing 2nd row
-function toggler() {
-    event.preventDefault();
+function toggler(event) {
+    if (event) {
+        event.preventDefault();
+    } // rest of your code here
     if (squre.classList.contains("hide")) {
         squre.classList.remove("hide");
         cube.classList.add("hide");

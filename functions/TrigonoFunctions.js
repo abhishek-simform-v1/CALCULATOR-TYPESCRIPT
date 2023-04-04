@@ -1,61 +1,63 @@
 "use strict";
 function sinVal() {
     CheckDisplayVal();
-    const sinans = Math.sin(res);
-    calculatorDisplay.value = sinans.toFixed(2);
+    const sinans = Math.sin((res * Math.PI) / 180);
+    calculatorDisplay.value = sinans.toFixed(3);
 }
 function cosVal() {
-    const cosans = Math.cos(res);
-    calculatorDisplay.value = cosans.toFixed(2);
+    CheckDisplayVal();
+    const cosans = Math.cos((res * Math.PI) / 180);
+    calculatorDisplay.value = cosans.toString();
 }
 function tanVal() {
     CheckDisplayVal();
-    const tanans = Math.tan(res);
-    calculatorDisplay.value = tanans.toFixed(2);
+    const tanans = Math.tan((res * Math.PI) / 180);
+    calculatorDisplay.value = tanans.toString();
 }
 function secVal() {
     CheckDisplayVal();
-    const secans = 1 / Math.cos(res);
-    calculatorDisplay.value = secans.toFixed(2);
+    const secans = 1 / Math.cos((res * Math.PI) / 180);
+    calculatorDisplay.value = secans.toString();
 }
 function cscVal() {
     CheckDisplayVal();
-    const cscans = 1 / Math.sin(res);
-    calculatorDisplay.value = cscans.toFixed(2);
+    const cscans = 1 / Math.sin((res * Math.PI) / 180);
+    calculatorDisplay.value = cscans.toString();
 }
 function cotVal() {
     CheckDisplayVal();
-    const cotans = 1 / Math.tan(res);
-    calculatorDisplay.value = cotans.toFixed(2);
+    const cotans = 1 / Math.tan((res * Math.PI) / 180);
+    calculatorDisplay.value = cotans.toString();
 }
 // SIN WITH HEIGHT
 function sinhVal() {
     CheckDisplayVal();
-    const sinansh = Math.sinh(res);
-    calculatorDisplay.value = sinansh.toFixed(2);
+    const sinansh = Math.sinh((res * Math.PI) / 180);
+    calculatorDisplay.value = sinansh.toString();
 }
 function coshVal() {
-    const cosansh = Math.cosh(res);
-    calculatorDisplay.value = cosansh.toFixed(2);
+    CheckDisplayVal();
+    const cosansh = Math.cosh((res * Math.PI) / 180);
+    calculatorDisplay.value = cosansh.toString();
 }
 function tanhVal() {
     CheckDisplayVal();
-    const tanansh = Math.tanh(res);
-    calculatorDisplay.value = tanansh.toFixed(2);
+    const tanansh = Math.tanh((res * Math.PI) / 180);
+    calculatorDisplay.value = tanansh.toString();
 }
 function sechVal() {
     CheckDisplayVal();
-    const secansh = 1 / Math.cosh(res);
-    calculatorDisplay.value = secansh.toFixed(2);
+    const secansh = 1 / Math.cosh((res * Math.PI) / 180);
+    calculatorDisplay.value = secansh.toString();
 }
 function cschVal() {
     CheckDisplayVal();
-    const cscansh = 1 / Math.sinh(res);
-    calculatorDisplay.value = cscansh.toFixed(2);
+    const cscansh = 1 / Math.sinh((res * Math.PI) / 180);
+    calculatorDisplay.value = cscansh.toString();
 }
 function cothVal() {
     CheckDisplayVal();
-    const cotansh = 1 / Math.tanh(res);
-    calculatorDisplay.value = cotansh.toFixed(2);
+    const cotansh = 1 / Math.tanh((res * Math.PI) / 180);
+    calculatorDisplay.value = cotansh.toString();
 }
 //# sourceMappingURL=TrigonoFunctions.js.map

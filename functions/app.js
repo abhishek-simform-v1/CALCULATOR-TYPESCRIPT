@@ -1,6 +1,7 @@
 "use strict";
 // // calculator screen
 const calculatorDisplay = document.querySelector('.display-container');
+const calculatedDisplay = document.querySelector('.calculated-container');
 const form = document.getElementById('myForm');
 const mydropDownMenu = document.querySelector('.dropdown-menu-scitific');
 const mydropdown = document.getElementById('my-dropdown-Scintific');
@@ -11,24 +12,25 @@ const dropdownFunction = dropdownFunctions[1];
 const dropdownModalTriangle = document.querySelector('.calculator-tf-modal-1');
 const dropdownModalFunction = document.querySelector('.calculator-tf-modal-2');
 const error = document.getElementById('error');
-console.log(dropdownFunctions[0]);
 let evalutedResult;
-dropdownTriangle.addEventListener('click', () => {
-    dropdownModalTriangle.classList.contains('hide')
-        ? dropdownModalTriangle.classList.remove('hide')
-        : dropdownModalTriangle.classList.add('hide');
-    if (!dropdownModalFunction.classList.contains('hide')) {
-        dropdownModalFunction.classList.add('hide');
-    }
-});
-dropdownFunction.addEventListener('click', () => {
-    dropdownModalFunction.classList.contains('hide')
-        ? dropdownModalFunction.classList.remove('hide')
-        : dropdownModalFunction.classList.add('hide');
-    if (!dropdownModalTriangle.classList.contains('hide')) {
-        dropdownModalTriangle.classList.add('hide');
-    }
-});
+if (dropdownModalFunction != null && dropdownModalTriangle != null && dropdownTriangle != undefined && dropdownFunction != undefined) {
+    dropdownTriangle.addEventListener('click', () => {
+        dropdownModalTriangle.classList.contains('hide')
+            ? dropdownModalTriangle.classList.remove('hide')
+            : dropdownModalTriangle.classList.add('hide');
+        if (!dropdownModalFunction.classList.contains('hide')) {
+            dropdownModalFunction.classList.add('hide');
+        }
+    });
+    dropdownFunction.addEventListener('click', () => {
+        dropdownModalFunction.classList.contains('hide')
+            ? dropdownModalFunction.classList.remove('hide')
+            : dropdownModalFunction.classList.add('hide');
+        if (!dropdownModalTriangle.classList.contains('hide')) {
+            dropdownModalTriangle.classList.add('hide');
+        }
+    });
+}
 // This function removes all spaces from a string
 function trimSpaces(str) {
     let newStr = '';
@@ -44,57 +46,53 @@ function trimSpaces(str) {
 }
 // This function performs the arithmetic operation based on the sign
 function cal(stack, currentNumber, sign) {
-    if (sign === '+') {
-        // Addition operation
-        stack.push(currentNumber); // Add current number to the stack
-    }
-    else if (sign === '-') {
-        // Subtraction operation
-        stack.push(-currentNumber); // Add negative of current number to the stack
-    }
-    else if (sign === '/') {
-        // Division operation
-        stack.push(stack.pop() / currentNumber); // Divide top of the stack by current number and add to stack
-    }
-    else if (sign === '*') {
-        // Multiplication operation
-        stack.push(stack.pop() * currentNumber); // Multiply top of the stack by current number and add to stack
-    }
-    else if (sign === '%') {
-        // Modulo operation
-        stack.push(stack.pop() % currentNumber); // Modulo top of the stack by current number and add to stack
-    }
-    else if (sign === '^') {
-        // Exponentiation operation
-        stack.push(Math.pow(stack.pop(), currentNumber)); // Raise top of the stack to the power of current number and add to stack
-    }
-    else if (sign === '√') {
-        // Square root operation
-        let operand = 1 / currentNumber;
-        console.log('operand', operand);
-        console.log(stack.pop()); // Take inverse of the top of the stack
-        stack.push(Math.pow(stack.pop(), operand)); // Raise current number to the power of the inverse and add to stack
-    }
-    else if (sign === 'log') {
-        // log operation
-        function getBaseLog(x, y) {
-            console.log(x);
-            console.log(y);
-            return Math.log(y) / Math.log(x);
-        }
-        console.log(currentNumber);
-        console.log(stack.pop());
-        stack.push(getBaseLog(getBaseLog(currentNumber, stack.pop())));
+    switch (sign) {
+        case "+":
+            // Addition operation
+            stack.push(currentNumber); // Add current number to the stack
+            break;
+        case '-':
+            // Subtraction operation
+            stack.push(-currentNumber); // Add negative of current number to the stack
+            break;
+        case "/":
+            // Division operation
+            stack.push(stack.pop() / currentNumber); // Divide top of the stack by current number and add to stack
+            break;
+        case "*":
+            // Multiplication operation
+            stack.push(stack.pop() * currentNumber); // Multiply top of the stack by current number and add to stack
+            break;
+        case "%":
+            // Modulo operation
+            stack.push(stack.pop() % currentNumber); // Modulo top of the stack by current number and add to stack
+            break;
+        case "^":
+            // Exponentiation operation
+            stack.push(Math.pow(stack.pop(), currentNumber)); // Raise top of the stack to the power of current number and add to stack
+            break;
+        case "√":
+            // root base operation
+            let operand = 1 / stack.pop(); // Take inverse of the top of the stack
+            stack.push(Math.pow(currentNumber, operand)); // Raise current number to the power of the inverse and add to stack
+            break;
+        case "g":
+            // root base operation
+            // log operation
+            stack.push(Math.log(stack.pop()) / Math.log(currentNumber));
+            break;
+        default:
+            break;
     }
 }
-// This function Evaluate the string
 function calculate(expression) {
     // Trim any whitespace from the input string
     expression = trimSpaces(expression);
     // Initialize a stack to hold numbers, a stack to hold sign pairs, and a default sign of '+'
     let stack = [];
     let stackSignPair = [];
-    let sign = '+';
+    let sign;
+    sign = '+';
     // Loop through each character in the expression
     for (let i = 0; i < expression.length; i++) {
         // If the character is a number or decimal point, keep adding to the current number until a non-number character is encountered
@@ -119,7 +117,9 @@ function calculate(expression) {
         else if (expression[i] === ')') {
             let currentNumber = stack.reduce((acc, curr) => (acc += curr), 0);
             let getPair = stackSignPair.pop();
-            [stack, sign] = getPair;
+            if (getPair) {
+                [stack, sign] = getPair;
+            }
             // Use the popped sign to perform the appropriate calculation and add to the stack
             cal(stack, currentNumber, sign);
             // Otherwise, update the current sign
@@ -134,6 +134,7 @@ function calculate(expression) {
 }
 function addToScreen(val) {
     calculatorDisplay.value += val;
+    focusingonInput();
 }
 // delete function
 function deletVal() {
@@ -144,8 +145,11 @@ function clearScreen(val) {
 }
 form.addEventListener('submit', handleForm);
 function handleForm(event) {
-    event.preventDefault();
-    submit();
+    if (event) {
+        event.preventDefault();
+        submit();
+        // rest of your code here
+    }
 }
 function submit() {
     evalutedResult = calculate(calculatorDisplay.value);
@@ -156,16 +160,18 @@ function submit() {
         setTimeout(() => {
             error.innerHTML = '';
         }, 1000);
+        const _exhaustiveCheck = evalutedResult;
+        throw new Error(`Unknown type ${_exhaustiveCheck}`);
     }
     else {
-        calculatorDisplay.value = evalutedResult;
+        calculatorDisplay.value = evalutedResult.toString();
         return evalutedResult;
     }
 }
-document.onkeydown = function (e) {
-    if (window.event.keyCode == '13') {
+document.onkeydown = function (ev) {
+    if (ev.key == 'Enter') {
+        ev.preventDefault();
         submit();
-        e.preventDefault();
     }
 };
 //# sourceMappingURL=app.js.map
