@@ -184,7 +184,8 @@ function handleForm(event?: Event) {
 }
 
 function extractMathematicalExpression(inputString: string): string | never {
-  const pattern = /^(?![\(\)]+$)(\d+\.?\d*|\+|\-|\*|\/|\^|\%|log|e|√|\(|\)|FeFunc)+$/g
+  const pattern = /^(\d+\.?\d*|\+|\-|\*|\/|\^|\%|log|e|√|\(|\)|FeFunc)+$/g
+
     ; // regular expression pattern to match only numbers and the specified operators
   const matches = inputString.match(pattern);
 
