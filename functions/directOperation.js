@@ -75,8 +75,8 @@ function Deg() {
         return;
     }
     else {
+        let Deg = document.querySelector('.toggleDeg');
         if (res) {
-            let Deg = document.querySelector('.toggleDeg');
             if (Deg.classList.contains('Deg')) {
                 calculatorDisplay.value = ((res * 180) / Math.PI).toString();
                 Deg.innerHTML = 'RAD';

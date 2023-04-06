@@ -184,8 +184,7 @@ function handleForm(event?: Event) {
 }
 
 function extractMathematicalExpression(inputString: string): string | never {
-  const pattern = /^(\d+\.?\d*|\+|\-|\*|\/|\^|\%|log|e|√|\(|\)|FeFunc)+$/g
-
+  const pattern = /^(?![\(\)]+$)(\d+\.?\d*|\+|\-|\*|\/|\^|\%|log|e|√|\(|\)|FeFunc)+$/g
     ; // regular expression pattern to match only numbers and the specified operators
   const matches = inputString.match(pattern);
 
@@ -203,10 +202,46 @@ function extractMathematicalExpression(inputString: string): string | never {
     throw new Error("Invalid input: the expression contains characters that are not numbers or the allowed operators.");
   }
 }
+function areBracketsBalanced(expr: string) {
+  // initialize an empty stack
+  let stack = [];
+
+  // loop through every character of the expression
+  for (let i = 0; i < expr.length; i++) {
+    let x = expr[i];
+
+    // check if the current character is a bracket
+    if (x !== '(' && x !== ')') {
+      // if not a bracket, continue to the next character
+      continue;
+    }
+
+    // check if the current character is an opening bracket
+    if (x == '(') {
+      // push the opening bracket to the stack
+      stack.push(x);
+      continue;
+    }
+    // if the current character is a closing bracket
+    else if (stack.length && x === ')') {
+      // remove the last opening bracket from the stack
+      stack.pop();
+    }
+    // if the stack is empty and there is a closing bracket, brackets are not balanced
+    else {
+      return false;
+    }
+  }
+
+  // if the stack is empty, brackets are balanced, else not
+  return stack.length === 0;
+}
 function submit(): number | never {
 
-  evalutedResult = calculate(extractMathematicalExpression(calculatorDisplay.value));
-
+  if (areBracketsBalanced((calculatorDisplay.value))) {
+    evalutedResult = calculate(extractMathematicalExpression(calculatorDisplay.value));
+    console.log("Hello");
+  }
   if (isNaN(evalutedResult)) {
     calculatorDisplay.value = '';
     error.style.color = '#ff0000';
