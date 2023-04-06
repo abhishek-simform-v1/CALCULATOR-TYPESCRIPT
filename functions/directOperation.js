@@ -2,7 +2,7 @@
 // square root of two function
 let res;
 function CheckDisplayVal() {
-    if (isNaN(Number(calculatorDisplay.value))) {
+    if ((isNaN(Number(extractMathematicalExpression(calculatorDisplay.value))))) {
         return (res = submit());
     }
     else {

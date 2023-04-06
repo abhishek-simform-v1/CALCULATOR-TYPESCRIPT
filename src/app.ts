@@ -91,12 +91,12 @@ function cal(stack: number[], currentNumber: number, sign: string): void {
     case "√":
       // root base operation
       let operand = 1 / stack.pop()!; // Take inverse of the top of the stack
-      stack.push(Math.pow(currentNumber, operand)); // Raise current number to the power of the inverse and add to stack
+      stack.push(Number(Math.pow(currentNumber, operand).toFixed(3))); // Raise current number to the power of the inverse and add to stack
       break;
     case "g":
       // root base operation
       // log operation
-      stack.push(Math.log(stack.pop()!) / Math.log(currentNumber));
+      stack.push((Math.log(stack.pop()!) / Math.log(currentNumber)));
       break;
     default:
       break;
@@ -182,8 +182,29 @@ function handleForm(event?: Event) {
     // rest of your code here
   }
 }
+
+function extractMathematicalExpression(inputString: string): string | never {
+  const pattern = /^[\d+\-/*^()√log\s]+$/; // regular expression pattern to match only numbers and the specified operators
+  const matches = inputString.match(pattern);
+
+  if (matches !== null && matches[0] === inputString) {
+    // if the entire input string matches the pattern, return it
+    return inputString;
+  } else {
+    calculatorDisplay.value = '';
+    error.style.color = '#ff0000';
+    error.innerHTML = '<p>not a number</p>';
+    setTimeout(() => {
+      error.innerHTML = '';
+    }, 1000);
+    // otherwise, throw an error
+    throw new Error("Invalid input: the expression contains characters that are not numbers or the allowed operators.");
+  }
+}
 function submit(): number | never {
-  evalutedResult = calculate(calculatorDisplay.value);
+
+  evalutedResult = calculate(extractMathematicalExpression(calculatorDisplay.value));
+
   if (isNaN(evalutedResult)) {
     calculatorDisplay.value = '';
     error.style.color = '#ff0000';

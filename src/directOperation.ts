@@ -1,9 +1,10 @@
 // square root of two function
 let res: number;
 function CheckDisplayVal(): number {
-  if (isNaN(Number(calculatorDisplay.value))) {
+  if ((isNaN(Number(extractMathematicalExpression(calculatorDisplay.value))))) {
     return (res = submit());
   } else {
+
     return (res = Number(calculatorDisplay.value));
   }
 }
@@ -124,6 +125,7 @@ function expo(): void {
 
 // factorial function
 function fact(): void {
+
   CheckDisplayVal();
   function factorial(n: number): number | void {
     let answer = 1;
