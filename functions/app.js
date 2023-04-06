@@ -152,7 +152,7 @@ function handleForm(event) {
     }
 }
 function extractMathematicalExpression(inputString) {
-    const pattern = /^[\d+\-/*^()√log\s]+$/; // regular expression pattern to match only numbers and the specified operators
+    const pattern = /^(\d+\.?\d*|\+|\-|\*|\/|\^|\%|log|e|√|\(|\)|FeFunc)+$/g; // regular expression pattern to match only numbers and the specified operators
     const matches = inputString.match(pattern);
     if (matches !== null && matches[0] === inputString) {
         // if the entire input string matches the pattern, return it
